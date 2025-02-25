@@ -691,7 +691,7 @@ public:
 	bool             IsSinking;
 	bool             WasSinkingAlready; // if(IsSinking && !WasSinkingAlready) { play SinkingSound; WasSinkingAlready = 1; }
 	bool             unknown_bool_3CF;
-	bool             unknown_bool_3D0;
+	bool             IsUseless; // Units that are considered to have fulfilled their purpose and useless. Harvesters that cannot do anything without player input are considered this. AI will sell these units on Service Depots.
 	bool             HasBeenAttacked; // ReceiveDamage when not HouseClass_IsAlly
 	bool             Cloakable;
 	bool             IsPrimaryFactory; // doubleclicking a warfac/barracks sets it as primary
