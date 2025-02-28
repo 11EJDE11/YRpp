@@ -38,7 +38,7 @@ struct reference {
 	using value_type = T[Count];
 
 	static const auto Size = Count;
-
+	static_assert(!std::is_reference_v<T> && (std::is_const_v<T> || (Address > 0x812000)));
 	constexpr reference() noexcept = default;
 	reference(reference&) = delete;
 
@@ -93,7 +93,7 @@ struct reference<T, Address, 0> {
 
 	constexpr reference() noexcept = default;
 	reference(reference&) = delete;
-
+	static_assert(!std::is_reference_v<T> && (std::is_const_v<T> || (Address > 0x812000)));
 private:
 	value_type& get() const noexcept {
 		return *reinterpret_cast<value_type*>(Address);

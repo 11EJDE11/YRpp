@@ -10,7 +10,7 @@ class Powerups {
 	 */
 
 	// the name of the effect, for INI reading purposes
-	static constexpr reference<const char*, 0x7E523Cu, 19u> const Effects{};
+	static constexpr reference<const char* const, 0x7E523Cu, 19u> const Effects{};
 
 	// the weight of the effect
 	static constexpr reference<int, 0x81DA8Cu, 19u> const Weights{};
