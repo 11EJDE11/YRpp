@@ -35,7 +35,7 @@ public:
 	static const auto AbsDerivateID = AbstractFlags::Object;
 
 	//global arrays
-	static constexpr reference<DynamicVectorClass<ObjectClass*>, 0xA8ECB8u> const CurrentObjects{};
+	DEFINE_REFERENCE(DynamicVectorClass<ObjectClass*>, CurrentObjects, 0xA8ECB8u)
 
 	//IPersistStream
 	virtual HRESULT __stdcall Load(IStream* pStm) R0;

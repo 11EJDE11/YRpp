@@ -10,23 +10,23 @@ struct SHPStruct;
 class WWMouseClass
 {
 public:
-	static constexpr reference<WWMouseClass*, 0x887640u> const Instance{};
+	DEFINE_REFERENCE(WWMouseClass*, Instance, 0x887640u)
 
 	static void PrepareScreen()
 	{
-		WWMouseClass::Instance->HideCursor();
+		WWMouseClass::Instance.HideCursor();
 
 		DSurface::Hidden->Fill(0);
 		GScreenClass::DoBlit(true, DSurface::Hidden);
 		DSurface::Temp = DSurface::Hidden;
 
-		WWMouseClass::Instance->ShowCursor();
+		WWMouseClass::Instance.ShowCursor();
 
-		MouseClass::Instance->SetCursor(MouseCursorType::NoMove, false);
-		MouseClass::Instance->RestoreCursor();
+		MouseClass::Instance.SetCursor(MouseCursorType::NoMove, false);
+		MouseClass::Instance.RestoreCursor();
 
-		TabClass::Instance->Activate();
-		MouseClass::Instance->RedrawSidebar(0);
+		TabClass::Instance.Activate();
+		MouseClass::Instance.RedrawSidebar(0);
 	}
 
 	virtual ~WWMouseClass()

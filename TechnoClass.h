@@ -184,7 +184,7 @@ class NOVTABLE TechnoClass : public RadioClass
 public:
 	static const auto AbsDerivateID = AbstractFlags::Techno;
 
-	static constexpr constant_ptr<DynamicVectorClass<TechnoClass*>, 0xA8EC78u> const Array {};
+	DEFINE_REFERENCE(DynamicVectorClass<TechnoClass*>, Array, 0xA8EC78u)
 
 	//IPersistStream
 	virtual HRESULT __stdcall Load(IStream* pStm) R0;

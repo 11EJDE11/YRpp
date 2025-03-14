@@ -167,10 +167,10 @@ public:
 	enum {PlayerAtA = 4475, PlayerAtB, PlayerAtC, PlayerAtD, PlayerAtE, PlayerAtF, PlayerAtG, PlayerAtH};
 
 	//Static
-	static constexpr constant_ptr<DynamicVectorClass<HouseClass*>, 0xA80228u> const Array{};
+	DEFINE_REFERENCE(DynamicVectorClass<HouseClass*>, Array, 0xA80228u)
 
-	static constexpr reference<HouseClass*, 0xA83D4Cu> const CurrentPlayer{}; // House of player at this computer.
-	static constexpr reference<HouseClass*, 0xAC1198u> const Observer{};;     // House of player that is observer.
+	DEFINE_REFERENCE(HouseClass*, CurrentPlayer, 0xA83D4Cu) // House of player at this computer.
+	DEFINE_REFERENCE(HouseClass*, Observer, 0xAC1198u);     // House of player that is observer.
 
 	//IConnectionPointContainer
 	virtual HRESULT __stdcall EnumConnectionPoints(IEnumConnectionPoints** ppEnum) R0;
@@ -404,7 +404,7 @@ public:
 
 	// gets the first house of a side with this name
 	static HouseClass* FindBySideIndex(int index) {
-		for(auto pHouse : *Array) {
+		for(auto pHouse : Array) {
 			if(pHouse->Type->SideIndex == index) {
 				return pHouse;
 			}
@@ -430,7 +430,7 @@ public:
 		ScenarioClass* pScenario = ScenarioClass::Instance;
 		for (int i = 0; i < 8; i++)
 		{
-			if (HouseClass::Array->GetItemOrDefault(pScenario->HouseIndices[i], nullptr) == this)
+			if (HouseClass::Array.GetItemOrDefault(pScenario->HouseIndices[i], nullptr) == this)
 				return i;
 		}
 		return -1;
@@ -465,7 +465,7 @@ public:
 	// Whether any human player controls this house.
 	bool IsControlledByHuman() const { // { JMP_THIS(0x50B730); }
 		bool result = this->IsHumanPlayer;
-		if(SessionClass::Instance->GameMode == GameMode::Campaign) {
+		if(SessionClass::Instance.GameMode == GameMode::Campaign) {
 			result = result || this->IsInPlayerControl;
 		}
 		return result;
@@ -473,7 +473,7 @@ public:
 
 	// Whether the human player on this computer can control this house.
 	bool IsControlledByCurrentPlayer() const { // { JMP_THIS(0x50B6F0); }
-		if(SessionClass::Instance->GameMode != GameMode::Campaign) {
+		if(SessionClass::Instance.GameMode != GameMode::Campaign) {
 			return this->IsCurrentPlayer();
 		}
 		return this->IsHumanPlayer || this->IsInPlayerControl;

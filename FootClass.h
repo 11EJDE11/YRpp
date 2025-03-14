@@ -16,7 +16,7 @@ class NOVTABLE FootClass : public TechnoClass
 public:
 	static const auto AbsDerivateID = AbstractFlags::Foot;
 
-	static constexpr constant_ptr<DynamicVectorClass<FootClass*>, 0x8B3DC0u> const Array{};
+	DEFINE_REFERENCE(DynamicVectorClass<FootClass*>, Array, 0x8B3DC0u)
 
 	//IPersistStream
 	//Destructor

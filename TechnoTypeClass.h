@@ -74,11 +74,11 @@ struct WeaponStruct
 class NOVTABLE TechnoTypeClass : public ObjectTypeClass
 {
 public:
-	static constexpr constant_ptr<DynamicVectorClass<TechnoTypeClass*>, 0xA8EB00u> const Array{};
+	DEFINE_REFERENCE(DynamicVectorClass<TechnoTypeClass*>, Array, 0xA8EB00u)
 
 	static __declspec(noinline) TechnoTypeClass* __fastcall Find(const char* pID)
 	{
-		for(auto pItem : *Array) {
+		for(auto pItem : Array) {
 			if(!_strcmpi(pItem->ID, pID)) {
 				return pItem;
 			}
@@ -88,8 +88,8 @@ public:
 
 	static __declspec(noinline) int __fastcall FindIndex(const char* pID)
 	{
-		for(int i = 0; i < Array->Count; ++i) {
-			if(!_strcmpi(Array->Items[i]->get_ID(), pID)) {
+		for(int i = 0; i < Array.Count; ++i) {
+			if(!_strcmpi(Array[i]->get_ID(), pID)) {
 				return i;
 			}
 		}
