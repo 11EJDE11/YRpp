@@ -133,6 +133,8 @@
     <ClInclude Include="$(YRppDir)\ASMMacros.h" />
     <ClInclude Include="$(YRppDir)\Audio.h" />
     <ClInclude Include="$(YRppDir)\BasicStructures.h" />
+    <ClInclude Include="$(YRppDir)\BeaconClass.h" />
+    <ClInclude Include="$(YRppDir)\BeaconManagerClass.h" />
     <ClInclude Include="$(YRppDir)\BitFont.h" />
     <ClInclude Include="$(YRppDir)\BitText.h" />
     <ClInclude Include="$(YRppDir)\BombClass.h" />
