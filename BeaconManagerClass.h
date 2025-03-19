@@ -10,7 +10,7 @@ public:
 	DEFINE_REFERENCE(SHPStruct*, BeaconArt, 0x89C474)
 	DEFINE_REFERENCE(SHPStruct*, RadarBeaconArt, 0x89C478)
 
-	BeaconManagerClass() JMP_THIS(0x430912)
+	BeaconManagerClass() JMP_THIS(0x430910)
 
 	~BeaconManagerClass() JMP_THIS(0x430930) // just an inlined Reset
 
