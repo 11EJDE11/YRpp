@@ -215,6 +215,15 @@ public:
 	virtual AbstractType WhatAmI() const RT(AbstractType);
 	virtual int	Size() const R0;
 
+	bool MakeObserver() const
+	{
+		if (HouseClass::CurrentPlayer != this)
+			return false;
+
+		HouseClass::Observer = const_cast<HouseClass*>(this);
+		return true;
+	}
+
 	bool IsAlliedWith(int idxHouse) const
 		//{ JMP_THIS(0x4F9A10); }
 	{
@@ -242,6 +251,12 @@ public:
 		//	{ JMP_THIS(0x4F9AF0); }
 	{
 		return this->IsAlliedWith(generic_cast<ObjectClass const*>(pAbstract));
+	}
+
+	inline bool IsMutualAlly(HouseClass const* pHouse) const
+	{
+		return pHouse == this
+			|| (this->Allies.Contains(pHouse->ArrayIndex) && pHouse->Allies.Contains(this->ArrayIndex));
 	}
 
 	void MakeAlly(int iHouse, bool bAnnounce)
@@ -426,11 +441,13 @@ public:
 	static void __fastcall LoadFromINIList(CCINIClass *pINI)
 		{ JMP_STD(0x5009B0); }
 
-	int GetSpawnPosition() {
-		ScenarioClass* pScenario = ScenarioClass::Instance;
+	int GetSpawnPosition() const {
+		const int currentIndex = this->ArrayIndex;
+		const int* houseIndices = ScenarioClass::Instance->HouseIndices;
+
 		for (int i = 0; i < 8; i++)
 		{
-			if (HouseClass::Array.GetItemOrDefault(pScenario->HouseIndices[i], nullptr) == this)
+			if (houseIndices[i] == currentIndex)
 				return i;
 		}
 		return -1;
@@ -709,6 +726,11 @@ public:
 	// Whether this house is equal to Observer
 	bool IsObserver() const {
 		return this == Observer;
+	}
+
+	bool inline IsInitiallyObserver() const
+	{
+		return this->IsHumanPlayer && (this->GetSpawnPosition() == -1);
 	}
 
 	// Whether CurrentPlayer is equal to Observer

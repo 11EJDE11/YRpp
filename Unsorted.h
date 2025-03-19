@@ -44,10 +44,15 @@ public:
 	DEFINE_REFERENCE(bool, ObserverMode, 0xAC10C8u)
 	DEFINE_POINTER(char, ScenarioName, 0xA8B8E0u)
 	DEFINE_REFERENCE(bool, DontSetExceptionHandler, 0xA8F7ACu)
+	DEFINE_REFERENCE(bool, EnableMPDebug, 0xA8B8B4u)
+	DEFINE_REFERENCE(bool, DrawMPDebugStats, 0xA8B8B5u)
 	DEFINE_REFERENCE(bool, EnableMPSyncDebug, 0xB04880u)
+	DEFINE_REFERENCE(bool, ScoreStuffLoad, 0xB0FBB8u)
 
 	DEFINE_REFERENCE(Vector3D<float>, VoxelLightSource, 0x887470)
 	DEFINE_REFERENCE(Vector3D<float>, VoxelShadowLightSource, 0x887420)
+
+	DEFINE_ARRAY_REFERENCE(byte, [8], ChatMask, 0xA8D108u);
 
 	static struct Network
 	{
@@ -58,9 +63,11 @@ public:
 		DEFINE_REFERENCE(int, GameStockKeepingUnit, 0xB73814u)
 		DEFINE_REFERENCE(int, ProtocolVersion, 0xA8B24Cu)
 		DEFINE_REFERENCE(int, FrameSendRate, 0xA8B554u)
+		DEFINE_REFERENCE(int, PreCalcFrameRate, 0xA8B570u)
 		DEFINE_REFERENCE(int, ReconnectTimeout, 0x83737Cu)
 		DEFINE_REFERENCE(int, MaxAhead, 0xA8B550u)
 		DEFINE_REFERENCE(int, MaxMaxAhead, 0xA8B568u)
+		DEFINE_REFERENCE(int, PreCalcMaxAhead, 0xA8B56Cu)
 		DEFINE_REFERENCE(int, LatencyFudge, 0xA8DB9Cu)
 		DEFINE_REFERENCE(int, RequestedFPS, 0xA8B558u)
 
