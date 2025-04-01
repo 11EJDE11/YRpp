@@ -70,6 +70,7 @@ public:
 		DEFINE_REFERENCE(int, PreCalcMaxAhead, 0xA8B56Cu)
 		DEFINE_REFERENCE(int, LatencyFudge, 0xA8DB9Cu)
 		DEFINE_REFERENCE(int, RequestedFPS, 0xA8B558u)
+		DEFINE_REFERENCE(bool, OutOfSync, 0xA8B8C2)
 
 		static bool Init()
 		{ JMP_STD(0x5DA6C0); }
