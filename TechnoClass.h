@@ -471,6 +471,10 @@ public:
 	HouseClass* GetOriginalOwner() const
 	{ JMP_THIS(0x70F820); }
 
+	// returns the house that controls this techno (replaces the ID with player's ID if needed)
+	int GetControllingHouse() const
+	{ JMP_THIS(0x6339B0); }
+
 	void FireDeathWeapon(int additionalDamage)
 	{ JMP_THIS(0x70D690); }
 
