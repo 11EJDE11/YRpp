@@ -41,6 +41,7 @@ public:
 
 		OutList.List[OutList.Tail] = event;
 
+#pragma warning(suppress: 4996)
 		OutList.Timings[OutList.Tail] = static_cast<int>(Imports::TimeGetTime()());
 
 		++OutList.Count;
