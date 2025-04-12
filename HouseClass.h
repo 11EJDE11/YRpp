@@ -692,6 +692,9 @@ public:
 	void SetPrimaryFactory(FactoryClass* pFactory, AbstractType absID, bool naval, BuildCat buildCat)
 		{ JMP_THIS(0x500850); }
 
+	void AssignHandicap(int difficulty)
+		{ JMP_THIS(0x4F6EC0); }
+
 	const CellStruct& GetBaseCenter() const {
 		if(this->BaseCenter != CellStruct::Empty) {
 			return this->BaseCenter;
