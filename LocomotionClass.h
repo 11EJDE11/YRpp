@@ -205,3 +205,25 @@ __forceinline T locomotion_cast(ILocomotionPtr& comLoco)
 //		return static_cast<T>(comLoco.GetInterfacePtr());
 */
 }
+
+struct TurnTrackType
+{
+	char NormalTrackStructIndex;
+	char ShortTrackStructIndex;
+	int Face;
+	int Flag;
+};
+
+struct TrackType
+{
+	Point2D Point;
+	int Face;
+};
+
+struct RawTrackType
+{
+	TrackType* TrackPoint;
+	int JumpIndex;
+	int EntryIndex;
+	int CellIndex;
+};
