@@ -957,7 +957,7 @@ public:
 	int                   ToCapture;
 //	IndexBitfield<HouseTypeClass *> RadarVisibleTo; // these house types(!?!, fuck you WW) can see my radar
 	IndexBitfield<HouseClass *> RadarVisibleTo;  // this crap is being rewritten to use house indices instead of house types
-	int                   SiloMoney;
+	int                   PointTotal; // Running score, based on units destroyed and units lost.
 	QuarryType            PreferredTargetType; // Set via map action 35. The preferred object type to attack.
 	CellStruct            PreferredTargetCell; // Set via map action 135 and 136. Used to override firing location of targettable SWs.
 	CellStruct            PreferredDefensiveCell; // Set via map action 140 and 141, or when an AIDefendAgainst SW is launched.
