@@ -322,7 +322,7 @@ public:
 	virtual void DrawExtraInfo(Point2D const& location, Point2D const& originalLocation, RectangleStruct const& bounds) const RX;
 	virtual void Uncloak(bool bPlaySound) RX;
 	virtual void Cloak(bool bPlaySound) RX;
-	virtual DWORD vt_entry_464(DWORD dwUnk) const R0;
+	virtual int GetFlashingIntensity(int currentIntensity) const R0;
 	virtual void UpdateRefinerySmokeSystems() RX;
 	virtual DWORD DisguiseAs(AbstractClass* pTarget) R0;
 	virtual void ClearDisguise() RX;
@@ -487,13 +487,13 @@ public:
 	LightConvertClass* GetDrawer() const
 	{ JMP_THIS(0x705D70); }
 
-	int GetEffectTintIntensity(int currentIntensity)
+	int GetEffectTintIntensity(int currentIntensity) const
 	{ JMP_THIS(0x70E360); }
 
-	int GetInvulnerabilityTintIntensity(int currentIntensity)
+	int GetInvulnerabilityTintIntensity(int currentIntensity) const
 	{ JMP_THIS(0x70E380); }
 
-	int GetAirstrikeTintIntensity(int currentIntensity)
+	int GetAirstrikeTintIntensity(int currentIntensity) const
 	{ JMP_THIS(0x70E4B0); }
 
 	int CombatDamage(int nWeaponIndex) const
