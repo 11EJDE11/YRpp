@@ -161,11 +161,6 @@ public:
 	{
 		return (X == a.X && Y == a.Y && Z == a.Z);
 	}
-	//unequality
-	constexpr bool operator!=(const Vector3D& a) const
-	{
-		return (X != a.X || Y != a.Y || Z != a.Z);
-	}
 	//scalar multiplication
 	constexpr Vector3D operator*(double r) const
 	{
