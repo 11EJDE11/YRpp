@@ -237,6 +237,7 @@ enum PlayerColorSlot : int
 	Purple = 6,
 	Pink = 7,
 	White = 8,
+	Count = 9,
 	Random = -2,
 	None = -1
 };
