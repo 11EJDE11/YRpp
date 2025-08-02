@@ -32,6 +32,9 @@ public:
 
 	//global array
 	DEFINE_REFERENCE(DynamicVectorClass<ColorScheme*>, Array, 0xB054D0u)
+
+	// Player color scheme slot index to color scheme index lookup table.
+	DEFINE_ARRAY_REFERENCE(byte, [9u], PlayerColorToColorSchemeLUT, 0x83ED14u)
 /*
  * trap! most schemes are duplicated - ShadeCount 1 and ShadeCount 53
 */
