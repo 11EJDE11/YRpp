@@ -226,7 +226,7 @@ enum class AIDifficulty : unsigned int
 
 // Represents player color slot indices, not color scheme indices.
 // ColorScheme::PlayerColorToColorSchemeLUT is used to map them into color scheme indices.
-enum PlayerColorType : int
+enum PlayerColorSlot : int
 {
 	Gold = 0,
 	Red = 1,
