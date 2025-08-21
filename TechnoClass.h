@@ -550,6 +550,9 @@ public:
 	void ImbueLocomotor(FootClass* target, CLSID clsid)
 	{ JMP_THIS(0x710000); }
 
+	CellStruct* NearbyLocation(CellStruct* pCell, AbstractClass* pDest)
+		{ JMP_THIS(0x703590); }
+
 	//Constructor
 	TechnoClass(HouseClass* pOwner) noexcept
 		: TechnoClass(noinit_t())
