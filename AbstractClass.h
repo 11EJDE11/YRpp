@@ -46,7 +46,7 @@ public:
 	DEFINE_REFERENCE((IndexClass<int, int>), TargetIndex, 0xB0E840u)
 
 	const char* GetRTTIName() const { return GetRTTIName(WhatAmI()); }
-	static const char* GetRTTIName(AbstractType abs) JMP_THIS(0x40DCB0);
+	static const char* __fastcall GetRTTIName(AbstractType abs) JMP_THIS(0x40DCB0);
 
 	//IUnknown
 	virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) R0;
