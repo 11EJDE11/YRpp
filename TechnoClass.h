@@ -553,6 +553,9 @@ public:
 	CellStruct* NearbyLocation(CellStruct* pCell, AbstractClass* pDest)
 		{ JMP_THIS(0x703590); }
 
+	bool CanPassiveAcquireTargets()
+		{ JMP_THIS(0x7091D0); }
+
 	//Constructor
 	TechnoClass(HouseClass* pOwner) noexcept
 		: TechnoClass(noinit_t())
