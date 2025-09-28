@@ -438,6 +438,9 @@ public:
 	void MarkPassengersAsExited()
 	{ JMP_THIS(0x7104C0); }
 
+	bool IsAbsorbAllowed() const
+	{ JMP_THIS(0x4598A0); }
+
 	// for gattlings
 	void SetCurrentWeaponStage(int idx)
 	{ JMP_THIS(0x70DDD0); }
