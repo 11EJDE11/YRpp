@@ -13,6 +13,10 @@ class NOVTABLE AirstrikeClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Airstrike;
+	static constexpr uintptr_t AbsVTable = 0x7E29A8;
+
+	//Static
+	DEFINE_REFERENCE(DynamicVectorClass<AirstrikeClass*>, Array, 0x889FB8u)
 
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
@@ -31,6 +35,9 @@ public:
 	//non-virtual
 	void StartMission(ObjectClass* pTarget)
 		{ JMP_THIS(0x41D830); }
+
+	void ResetTarget()
+	{ JMP_THIS(0x41DA20); }
 
 	void InvalidatePointer(void* ptr)
 	{ JMP_THIS(0x41D540); }
