@@ -153,7 +153,12 @@ public:
 	int GameVersion;
 	DynamicVectorClass<class MultiMission*> MultiMission;
 	char ScenarioFilename[0x202]; // 0x6A8
-	PROTECTED_PROPERTY(BYTE, unknown_8AA[0x1F62]);
+	PROTECTED_PROPERTY(char, unknown_8AA[0x1AAA]);
+	CCFileClass RecordFile;
+	unsigned int Record  : 1;
+	unsigned int Play    : 1;
+	unsigned int Attract : 1;
+	PROTECTED_PROPERTY(char, unknown_23C4[0x448]);
 	DynamicVectorClass<NodeNameType*> unknown_vector_280C;
 	DynamicVectorClass<NodeNameType*> unknown_vector_2824;
 	DynamicVectorClass<NodeNameType*> StartSpots;
