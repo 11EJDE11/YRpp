@@ -36,7 +36,7 @@ public:
 	void StartMission(ObjectClass* pTarget)
 		{ JMP_THIS(0x41D830); }
 
-	void ResetTarget()
+	void ResetTarget(ObjectClass* pTarget)
 	{ JMP_THIS(0x41DA20); }
 
 	void InvalidatePointer(void* ptr)
