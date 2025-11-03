@@ -39,6 +39,9 @@ public:
 	void ResetTarget(ObjectClass* pTarget)
 	{ JMP_THIS(0x41DA20); }
 
+	void ClearTarget()
+	{ JMP_THIS(0x41DB40); }
+
 	void InvalidatePointer(void* ptr)
 	{ JMP_THIS(0x41D540); }
 
