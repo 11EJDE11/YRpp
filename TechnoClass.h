@@ -324,7 +324,7 @@ public:
 	virtual void Cloak(bool bPlaySound) RX;
 	virtual int GetFlashingIntensity(int currentIntensity) const R0;
 	virtual void UpdateRefinerySmokeSystems() RX;
-	virtual DWORD DisguiseAs(AbstractClass* pTarget) R0;
+	virtual DWORD DisguiseAs(AbstractClass* pTarget) JMP_THIS(0x70E280);
 	virtual void ClearDisguise() RX;
 	virtual bool IsItTimeForIdleActionYet() const R0;
 	virtual bool UpdateIdleAction() R0;
