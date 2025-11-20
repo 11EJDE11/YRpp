@@ -138,6 +138,9 @@ public:
 	int DistanceFrom3D(AbstractClass *that) const
 		{ JMP_THIS(0x5F6360); }
 
+	void BecomeUntargetable()
+		{ JMP_THIS(0x70D4A0); }
+
 	//Operators
 	bool operator < (const AbstractClass &rhs) const {
 		return this->UniqueID < rhs.UniqueID;
