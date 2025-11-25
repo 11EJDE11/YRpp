@@ -207,6 +207,15 @@ public:
 
 	static void __fastcall LogFrameCRC(int frameIndex)
 	{ JMP_STD(0x650A90); }
+
+	static void RegisterGameStartTime()
+	{ JMP_STD(0x6C87F0); }
+
+	static void RegisterGameEndTime()
+	{ JMP_STD(0x6C8820); }
+
+	static void SendStatisticsPacket()
+	{ JMP_STD(0x6C6F50); }
 };
 
 // this fake class contains the IIDs used by the game
