@@ -8,6 +8,7 @@
 #include <winsock.h>
 #include <VersionClass.h>
 #include <Helpers/CompileTime.h>
+#include <CCFileClass.h>
 
 struct SessionOptionsClass
 {
