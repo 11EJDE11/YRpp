@@ -625,7 +625,7 @@ public:
 	float				 OccupyDamageMultiplier;
 	float				 OccupyROFMultiplier;
 	int				 OccupyWeaponRange;
-	int				 BunkerDamageMultiplier;
+	float				 BunkerDamageMultiplier;
 	float				 BunkerROFMultiplier;
 	int				 BunkerWeaponRangeBonus;
 	float				 OpenToppedDamageMultiplier;
