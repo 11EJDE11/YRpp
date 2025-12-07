@@ -725,6 +725,8 @@ namespace Unsorted
 	*/
 	// Note: SomeMutex has been renamed to this because it reflects the usage better
 	DEFINE_REFERENCE(int, ScenarioInit, 0xA8E7AC) // h2ik
+
+	DEFINE_REFERENCE(HANDLE, AppMutex, 0xB0BCE4)
 };
 
 struct CheatData
