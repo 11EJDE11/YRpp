@@ -80,7 +80,7 @@ public:
 	BYTE   Translucent25State;
 	BYTE   Translucent50State;
 	bool   Normalized;
-	ParticleTypeClass* NextParticle;
+	int NextParticle; // ParticleTypeClass array index, -1 if not set.
 	BehavesLike BehavesLike;
 
 };
