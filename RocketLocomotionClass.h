@@ -7,6 +7,8 @@
 class NOVTABLE RocketLocomotionClass : public LocomotionClass
 {
 public:
+	static constexpr uintptr_t ILocoVTable = 0x7F0B1C;
+
 	//IUnknown
 	virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) R0;
 	virtual ULONG __stdcall AddRef() R0;
