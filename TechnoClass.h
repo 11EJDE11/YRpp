@@ -235,7 +235,12 @@ public:
 	virtual bool vt_entry_310() const R0;
 	virtual bool CanDeploySlashUnload() const R0;
 	virtual int GetROF(int nWeapon) const R0;
-	virtual int GetGuardRange(int dwUnk) const R0;
+	// Parameter controls behaviour. Unlisted values behave same as 1.
+	// -1 = returns -1 as range
+	// 0  = uses GuardRange/weapon range as is
+	// 1  = doubles range, if less than 0 increase to 0, if more than 4096 leptons cap it at that
+	// 2  = doubles range, if less than 1792 leptons increase to 1792, if more than that return as is unless more than 4096 in which case cap at 4096.
+	virtual int GetGuardRange(int control) const R0;
 	virtual bool vt_entry_320() const R0;
 	virtual bool IsRadarVisible(int* pOutDetection) const R0; // out value will be set to 1 if unit is cloaked and 2 if it is subterranean, otherwise it's unchanged
 	virtual bool IsSensorVisibleToPlayer() const R0;
