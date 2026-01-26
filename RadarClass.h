@@ -29,6 +29,21 @@ public:
 	virtual void Init_For_House() RX;
 
 	//Non-virtual
+	Point2D* GetCrdOnRadar(Point2D *pOutBuffer, CoordStruct *pCrd, bool bRestrictToBound)
+	{
+		JMP_THIS(0x6557F0);
+	}
+
+	Point2D GetCrdOnRadar(CoordStruct crd, bool bRestrictToBound = true)
+	{
+		auto pOutBuffer = new Point2D();
+		return *GetCrdOnRadar(pOutBuffer, &crd, bRestrictToBound);
+	}
+
+	void RefreshCrd(Point2D* pCrd)
+	{
+		JMP_THIS(0x6562D0);
+	}
 
 protected:
 	//Constructor
