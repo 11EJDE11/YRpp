@@ -741,7 +741,7 @@ public:
 		return CurrentPlayer && CurrentPlayer->IsObserver();
 	}
 
-	int CalculateCostMultipliers()
+	void CalculateCostMultipliers()
 		{ JMP_THIS(0x50BF60); }
 
 	void ForceEnd()
