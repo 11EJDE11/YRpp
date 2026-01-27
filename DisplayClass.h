@@ -20,6 +20,12 @@ public:
 	void  SetActiveFoundation(const CellStruct *Coords)
 		{ JMP_THIS(0x4A8BF0); }
 
+	// Building Adjacent etc. check. Pretty much always called with:
+	// foundationData = DisplayClass::CurrentFoundation_Data
+	// currentPosition = DisplayClass::CurrentFoundation_CenterCell + DisplayClass::CurrentFoundation_TopLeftOffset
+	bool PassesProximityCheck(ObjectTypeClass* pType, int houseArrayIndex, CellStruct* foundationData, CellStruct* currentPosition)
+		{ JMP_THIS(0x4A8EB0); }
+
 	//Destructor
 	virtual ~DisplayClass() RX;
 
