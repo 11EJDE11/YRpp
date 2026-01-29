@@ -463,6 +463,9 @@ public:
 		int, int, int nZAdjust, ZGradient eZGradientDescIdx, int, int nBrightness, int TintColor,
 		SHPStruct* pZShape, int nZFrame, int nZOffsetX, int nZOffsetY, int);
 
+	double ThreatCoeffients(const ObjectClass* pTarget, const CoordStruct* pLocation) const
+	{ JMP_THIS(0x70CD10); }
+
 	int sub_70DE00(int State)
 	{ JMP_THIS(0x70DE00); }
 
@@ -543,6 +546,9 @@ public:
 	// Invokes AI response on their 'base' being attacked. Used by buildings, ToProtect=true technos and Whiner=true team members.
 	void BaseIsAttacked(TechnoClass* pEnemy)
 	{ JMP_THIS(0x708080); }
+
+	bool CanRetaliateToAttacker(ObjectClass* pAttacker, WarheadTypeClass* pWH)
+	{ JMP_THIS(0x7087C0); }
 
 	void GattlingRateUp(int value)
 	{ JMP_THIS(0x70DE70); }
