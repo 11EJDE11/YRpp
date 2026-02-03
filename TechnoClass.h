@@ -570,6 +570,9 @@ public:
 	bool CanPassiveAcquireTargets()
 		{ JMP_THIS(0x7091D0); }
 
+	bool TargetingTimerFinished()
+		{ JMP_THIS(0x70F7E0); }
+
 	//Constructor
 	TechnoClass(HouseClass* pOwner) noexcept
 		: TechnoClass(noinit_t())
