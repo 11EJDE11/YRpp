@@ -33,4 +33,9 @@ public:
 		JMP_THIS(0x5BD730);
 	}
 
+	Matrix3D const& GetLayerMatrix(int layer, unsigned frame) const
+	{
+		// inlined
+		return Matrixes[layer + LayerCount * (frame % FrameCount)];
+	}
 };
