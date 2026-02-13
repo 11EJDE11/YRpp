@@ -759,6 +759,9 @@ public:
 	bool AISupers()
 		{ JMP_THIS(0x50B1D0); }
 
+	void SellWall(CellStruct& cell, bool skipSound)
+		{ JMP_THIS(0x4FCE80); }
+
 	//Constructor
 	HouseClass(HouseTypeClass* pCountry) noexcept
 		: HouseClass(noinit_t())
