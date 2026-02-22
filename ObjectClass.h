@@ -170,7 +170,7 @@ public:
 	virtual RadioCommand ReceiveCommand(TechnoClass* pSender, RadioCommand command, AbstractClass* &pInOut) RT(RadioCommand);
 	virtual bool DiscoveredBy(HouseClass *pHouse) R0;
 	virtual void SetRepairState(int state) RX; // 0 - off, 1 - on, -1 - toggle
-	virtual void Sell(DWORD dwUnk) RX;
+	virtual void Sell(int control) RX; // -1 = Always sell, 0 = Sell only if already being sold/unpacking, 1 = Same as -1 except not if dying from DelayKill, Other = only plays click sound
 	virtual void AssignPlanningPath(signed int idxPath, signed char idxWP) RX;
 	virtual void MoveToDirection(FacingType facing) RX; // Vestigial, never called by the game.
 	virtual Move IsCellOccupied(CellClass *pDestCell, FacingType facing, int level, CellClass* pSourceCell, bool alt) const RT(Move);
