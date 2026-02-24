@@ -13,10 +13,20 @@
 class TechnoTypeClass;
 class TeamTypeClass;
 
+enum class AITriggerConditionComparatorType : unsigned int
+{
+	Less = 0,
+	LessOrEqual = 1,
+	Equal = 2,
+	GreaterOrEqual = 3,
+	Greater = 4,
+	NotEqual = 5
+};
+
 struct AITriggerConditionComparator
 {
-	int ComparatorType;
 	int ComparatorOperand;
+	AITriggerConditionComparatorType ComparatorType;
 };
 
 class NOVTABLE AITriggerTypeClass : public AbstractTypeClass
