@@ -241,6 +241,9 @@ public:
 		return this->AnimStates[static_cast<int>(slot)];
 	}
 
+	bool CanBeOccupiedBy(InfantryClass* pInfantry) const
+		{ JMP_THIS(0x457CE0); }
+
 	//Constructor
 	BuildingClass(BuildingTypeClass* pType, HouseClass* pOwner) noexcept
 		: BuildingClass(noinit_t())
