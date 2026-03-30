@@ -9,6 +9,7 @@
 
 //forward declarations
 class LocomotionClass;
+class PathFinderData;
 class TeamClass;
 
 class NOVTABLE FootClass : public TechnoClass
@@ -106,6 +107,9 @@ public:
 
 	bool UpdatePathfinding(CellStruct destinationCell, BOOL restart, int mode)
 		{ JMP_THIS(0x4D3920); }
+
+	PathFinderData* FindPath(CellStruct* pReachableDestCell, CellStruct* pBuffer, int unusedInt, int unusedInt_1, int nPathDirectionsIdx, int nMode)
+		{ JMP_THIS(0x4CBBA0); }
 
 	// Removes the first passenger and updates the Gunner.
 	FootClass* RemoveFirstPassenger()
