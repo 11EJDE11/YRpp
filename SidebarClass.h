@@ -110,6 +110,9 @@ public:
 	int SetTab(int tabIndex)
 		{ JMP_THIS(0x6A7590); }
 
+	void OnTechnoDestroyed(TechnoClass* pTechno)
+		{ JMP_THIS(0x6A5F20); }
+
 protected:
 	//Constructor
 	SidebarClass() {}	//don't need this
