@@ -70,7 +70,7 @@ public:
 	DEFINE_REFERENCE(SidebarClass, Instance, 0x87F7E8u);
 
 	DEFINE_ARRAY_REFERENCE(wchar_t, [0x42u], TooltipBuffer, 0xB07BC4u);
-	DEFINE_REFERENCE(ToggleClass, ToggelRepairButton, 0xB0B3A0);
+	DEFINE_REFERENCE(ToggleClass, ToggleRepairButton, 0xB0B3A0);
 	DEFINE_ARRAY_REFERENCE(ShapeButtonClass, [4], TabButtons, 0xB07C48u);
 
 	void SidebarNeedsRepaint(int mode = 0) {
