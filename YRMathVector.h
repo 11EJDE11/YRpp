@@ -107,6 +107,16 @@ public:
 		else
 			return std::numeric_limits<double>::quiet_NaN();
 	}
+	//calculate angle sin
+	constexpr double AngleSinTo(const Vector2D& a) const
+	{
+		return (X * a.Y - Y * a.X) / (Magnitude() * a.Magnitude());
+	}
+	//calculate angle cos
+	constexpr double AngleCosTo(const Vector2D& a) const
+	{
+		return (*this * a) / (Magnitude() * a.Magnitude());
+	}
 };
 
 template <typename T>
