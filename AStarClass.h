@@ -1,7 +1,10 @@
 #pragma once
 
+// Reverse engineering and coding by: CrimRecya
+
 #include <ArrayClasses.h>
 #include <GeneralStructures.h>
+#include <FootClass.h>
 
 class TechnoClass;
 struct AStarClass_PathNodeBuffer;
@@ -16,6 +19,19 @@ struct AStarClass_PassabilityData
 };
 static_assert(sizeof(AStarClass_PassabilityData) == 0x3E8);
 
+class PathFinderData
+{
+	CellStruct StartCell;
+	int TotalDistance;
+	int PathLength;
+	int* Directions;
+	int unknown_int_10;
+	int* Levels;
+	CellStruct unknown_cellstruct_18;
+	int unknown_int_1C;
+};
+static_assert(sizeof(PathFinderData) == 0x20);
+
 class AStarClass
 {
 public:
@@ -25,11 +41,23 @@ public:
 	int AttemptPath(
 		CellStruct* pFromMapCrd,
 		CellStruct* pToMapCrd,
-		TechnoClass* pTechno,
+		FootClass* pFoot,
 		bool bFromAlt,
 		bool bToAlt,
 		MovementZone nMovementZone = MovementZone::None)
 		{ JMP_THIS(0x42D170); }
+
+	PathFinderData* FindPath(
+		CellStruct* pStart,
+		CellStruct* pEnd,
+		FootClass* pFoot,
+		int* pDirs,
+		int maxSteps,
+		MovementZone movementZone,
+		int mode)
+	{
+		JMP_THIS(0x42C900);
+	}
 
 	char unknown_byte_0;
 	bool FindBridgeDir;
