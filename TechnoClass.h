@@ -663,7 +663,7 @@ public:
 	CoordStruct      ChronoDestCoords; // teleport loco and chsphere set this
 	AirstrikeClass*  Airstrike; //Boris
 	bool             Berzerk;
-	DWORD            BerzerkDurationLeft;
+	int            BerzerkDurationLeft;
 	DWORD            SprayOffsetIndex; // hardcoded array of xyz offsets for sprayattack, 0 - 7, see 6FE0AD
 	bool             Uncrushable; // DeployedCrushable fiddles this, otherwise all 0
 
