@@ -776,22 +776,22 @@ public:
 	// if DistributedFire=yes, this is used to determine which possible targets should be ignored in the latest threat scan
 	DECLARE_PROPERTY(DynamicVectorClass<AbstractClass*>, AttackedTargets);
 
-	DECLARE_PROPERTY(AudioController, Audio3);
+	DECLARE_PROPERTY(AudioController, TurretRotateSoundController);
 
-	BOOL            unknown_BOOL_49C; // Turret is moving?
-	BOOL            TurretIsRotating;
+	bool            IsTurretRotateSoundPlaying;
+	bool            TurretIsRotating;
 
-	DECLARE_PROPERTY(AudioController, Audio4);
+	DECLARE_PROPERTY(AudioController, GattlingSoundController);
 
-	bool             unknown_bool_4B8;
-	DWORD            unknown_4BC;
+	bool             IsGattlingSoundPlaying;
+	DWORD            unknown_4BC; // Set to 0 and loaded but never read/used
 
-	DECLARE_PROPERTY(AudioController, Audio5);
+	DECLARE_PROPERTY(AudioController, UnusedGattlingSoundController); // Called to stop but never actually used to play anything
 
-	bool             unknown_bool_4D4;
-	DWORD            unknown_4D8;
+	bool             IsUnusedGattlingSoundPlaying; // Set to 0 and loaded but never read/used
+	DWORD            unknown_4D8; // Set to 0 and loaded but never read/used
 
-	DECLARE_PROPERTY(AudioController, Audio6);
+	DECLARE_PROPERTY(AudioController, QueuedVoiceSoundController); // Used by select/move/attack voices.
 
 	DWORD            QueuedVoiceIndex;
 	DWORD            unknown_4F4;
