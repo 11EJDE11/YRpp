@@ -778,8 +778,8 @@ public:
 
 	DECLARE_PROPERTY(AudioController, TurretRotateSoundController);
 
-	bool            IsTurretRotateSoundPlaying;
-	bool            TurretIsRotating;
+	BOOL            IsTurretRotateSoundPlaying;
+	BOOL            TurretIsRotating;
 
 	DECLARE_PROPERTY(AudioController, GattlingSoundController);
 
@@ -806,3 +806,5 @@ public:
 	ObjectTypeClass* Disguise;
 	HouseClass*      DisguisedAsHouse;
 };
+
+static_assert(sizeof(TechnoClass) == 0x520);
