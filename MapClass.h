@@ -386,6 +386,15 @@ public:
 	bool PlacePowerupCrate(CellStruct cell, Powerup type)
 		{ JMP_THIS(0x56BEC0); }
 
+	// Called from Nearby_Location and AI build location evaluation.
+	// Checks bunch of stuff like do cells in rectangle have terrain/buildings, overlays, ramp etc.
+	bool IsAreaFree(RectangleStruct* pRect, int houseID)
+		{ JMP_THIS(0x586780); }
+
+	// Checks if the area is in the visible portion of map.
+	bool InLocalRadar(RectangleStruct* pRect, bool checkLevel)
+		{ JMP_THIS(0x578390); }
+
 // ====================================
 //         FIRESTORM RELATED
 // ====================================
