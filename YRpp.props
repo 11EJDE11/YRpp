@@ -134,6 +134,7 @@
     <ClInclude Include="$(YRppDir)\AnimTypeClass.h" />
     <ClInclude Include="$(YRppDir)\ArrayClasses.h" />
     <ClInclude Include="$(YRppDir)\ASMMacros.h" />
+    <ClInclude Include="$(YRppDir)\AStarClass.h" />
     <ClInclude Include="$(YRppDir)\Audio.h" />
     <ClInclude Include="$(YRppDir)\BasicStructures.h" />
     <ClInclude Include="$(YRppDir)\BeaconClass.h" />
@@ -326,6 +327,7 @@
     <ClInclude Include="$(YRppDir)\VoxClass.h" />
     <ClInclude Include="$(YRppDir)\VoxelAnimClass.h" />
     <ClInclude Include="$(YRppDir)\VoxelAnimTypeClass.h" />
+    <ClInclude Include="$(YRppDir)\WalkLocomotionClass.h" />
     <ClInclude Include="$(YRppDir)\WarheadTypeClass.h" />
     <ClInclude Include="$(YRppDir)\WaveClass.h" />
     <ClInclude Include="$(YRppDir)\WaypointPathClass.h" />
