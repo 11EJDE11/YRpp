@@ -26,7 +26,7 @@ public:
 		MouseClass::Instance.SetCursor(MouseCursorType::NoMove, false);
 		MouseClass::Instance.RestoreCursor();
 
-		TabClass::Instance.Activate();
+		TabClass::Instance.Activate(1);
 		MouseClass::Instance.RedrawSidebar(0);
 	}
 

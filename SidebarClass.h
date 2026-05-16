@@ -95,7 +95,7 @@ public:
 	virtual ~SidebarClass() RX;
 
 	//SidebarClass
-	virtual bool vt_entry_D8(int nUnknown) R0;
+	virtual bool Activate(int control) R0;
 
 	//Non-virtual
 
@@ -115,6 +115,9 @@ public:
 
 	void OnTechnoDestroyed(TechnoClass* pTechno)
 		{ JMP_THIS(0x6A5F20); }
+
+	void BlitSidebar(bool force)
+		{ JMP_THIS(0x6A70E0); }
 
 protected:
 	//Constructor

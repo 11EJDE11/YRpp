@@ -7,6 +7,7 @@
 class DSurface;
 struct RectangleStruct;
 class GadgetClass;
+class Surface;
 class NOVTABLE GScreenClass : public IGameMap
 {
 public:
@@ -46,6 +47,8 @@ public:
 	virtual void UpdateCursorMinimapState(bool miniMap) = 0;
 
 	void Render() { JMP_THIS(0x4F4480); }
+
+	static void __fastcall UpdatePrimarySurface(bool mouse_captured, Surface* surface, RectangleStruct* rect) { JMP_STD(0x4F4780); }
 
 protected:
 	//Constuctor

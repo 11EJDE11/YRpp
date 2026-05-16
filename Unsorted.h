@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <ArrayClasses.h>
 #include <GeneralDefinitions.h>
@@ -39,7 +39,8 @@ public:
 
 	DEFINE_REFERENCE(HWND, hWnd, 0xB73550u)
 	DEFINE_REFERENCE(HINSTANCE, hInstance, 0xB732F0u)
-
+	DEFINE_REFERENCE(HIMC, hIMC, 0xB7355Cu)
+	
 	DEFINE_REFERENCE(bool, bVPLRead, 0x887418u)
 	DEFINE_REFERENCE(bool, bVideoBackBuffer, 0x840A6Cu)
 	DEFINE_REFERENCE(bool, bAllowVRAMSidebar, 0xA8EB96u)
@@ -216,6 +217,12 @@ public:
 
 	static void SendStatisticsPacket()
 	{ JMP_STD(0x6C6F50); }
+
+	static bool __fastcall IsMoviePlaying()
+	{ JMP_STD(0x5C0980); }
+
+	static void __fastcall BlitMovie()
+	{ JMP_STD(0x5C09A0); }
 };
 
 // this fake class contains the IIDs used by the game
@@ -725,6 +732,12 @@ namespace Unsorted
 	*/
 	// Note: SomeMutex has been renamed to this because it reflects the usage better
 	DEFINE_REFERENCE(int, ScenarioInit, 0xA8E7AC) // h2ik
+	DEFINE_REFERENCE(int, GameInFocus, 0xA8ED80)
+
+	DEFINE_REFERENCE(int, SpecialDialog, 0xA8EDA0)
+	DEFINE_REFERENCE(int, WSDialogCount, 0xA8ED8C)
+
+	DEFINE_REFERENCE(bool, ScenarioStarted, 0xA8ED5C)
 
 	DEFINE_REFERENCE(HANDLE, AppMutex, 0xB0BCE4)
 };

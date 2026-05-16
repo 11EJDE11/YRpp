@@ -126,6 +126,17 @@ public:
 	DEFINE_REFERENCE(int, BlueShiftLeft, 0x8A0DD8)
 	DEFINE_REFERENCE(int, BlueShiftRight, 0x8A0DDC)
 
+	DEFINE_REFERENCE(int, RenderWidth, 0x8A00A4)
+	DEFINE_REFERENCE(int, RenderHeight, 0x8A00A8)
+	DEFINE_REFERENCE(int, RenderBitsPerPixel, 0x8A00AC)
+
+	DEFINE_REFERENCE(short, HalfbrightMask, 0x8A0DE8)
+	DEFINE_REFERENCE(short, QuarterbrightMask, 0x8A0DEA)
+	DEFINE_REFERENCE(short, EighthbrightMask, 0x8A0DEC)
+
+	DEFINE_REFERENCE(bool, AllowSoftwareBlitFills, 0x8205D4)
+	DEFINE_REFERENCE(bool, AllowSoftwareBlitStretch, 0x8A0DEE)
+
 	//TextBox dimensions for tooltip-style boxes
 	static RectangleStruct* __fastcall GetTextDimensions(
 		RectangleStruct* pOutBuffer, wchar_t const* pText, Point2D location,

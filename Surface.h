@@ -57,22 +57,23 @@ public:
 
 	virtual bool DrawLine(Point2D* pStart, Point2D* pEnd, COLORREF nColor) R0;
 
-	virtual bool DrawLineColor_AZ(
+	// The next following 4 functions are Alpha&ZData related
+	virtual bool DrawLineColor(
 		RectangleStruct* pRect, Point2D* pStart, Point2D* pEnd, COLORREF nColor,
-		DWORD dwUnk1, DWORD dwUnk2, bool bUnk) R0;
+		int startZ, int endZ, bool bUnk) R0;
 
-	virtual bool DrawMultiplyingLine_AZ(
+	virtual bool DrawMultiplyingLine(
 		RectangleStruct* pRect, Point2D* pStart, Point2D* pEnd, DWORD dwMultiplier,
 		DWORD dwUnk1, DWORD dwUnk2, bool bUnk) R0;
 
-	virtual bool DrawSubtractiveLine_AZ(
+	virtual bool DrawSubtractiveLine(
 		RectangleStruct* pRect, Point2D* pStart, Point2D* pEnd, ColorStruct* pColor,
 		DWORD dwUnk1, DWORD dwUnk2, bool bUnk1, bool bUnk2,
 		bool bUkn3, bool bUkn4, float fUkn) R0;
 
-	virtual bool DrawRGBMultiplyingLine_AZ(
+	virtual bool DrawRGBMultiplyingLine(
 		RectangleStruct* pRect, Point2D* pStart, Point2D* pEnd, ColorStruct* pColor,
-		float Intensity, DWORD dwUnk1, DWORD dwUnk2) R0;
+		float Intensity, int zSource, int zTarget) R0;
 
 	virtual bool PlotLine(
 		RectangleStruct* pRect, Point2D* pStart, Point2D* pEnd, bool(__fastcall* fpDrawCallback)(int*)) R0;
@@ -130,6 +131,7 @@ class NOVTABLE XSurface : public Surface
 {
 public:
 	XSurface(int nWidth = 640, int nHeight = 400) { JMP_THIS(0x5FE020); }
+	XSurface(noinit_t) : Surface {} {}
 
 	virtual bool PutPixelClip(Point2D* pPoint, short nUkn, RectangleStruct* pRect) R0;
 
@@ -195,6 +197,8 @@ static Point2D* Fancy_Text_Print_Wide(const Point2D& retBuffer, const wchar_t* T
 class NOVTABLE DSurface : public XSurface
 {
 public:
+	DSurface(noinit_t) : XSurface { noinit_t{} } {}
+
 	DEFINE_REFERENCE(DSurface*, Tile, 0x8872FCu)
 	DEFINE_REFERENCE(DSurface*, Sidebar, 0x887300u)
 	DEFINE_REFERENCE(DSurface*, Primary, 0x887308u)

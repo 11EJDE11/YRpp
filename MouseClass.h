@@ -46,10 +46,6 @@ public:
 	//Static
 	DEFINE_REFERENCE(TabClass, Instance, 0x87F7E8u)
 
-	// non-virtual
-	void Activate(int control = 1)
-		{ JMP_THIS(0x6D04F0); }
-
 	TabDataClass TabData;
 	CDTimerClass unknown_timer_552C;
 	CDTimerClass InsufficientFundsBlinkTimer;

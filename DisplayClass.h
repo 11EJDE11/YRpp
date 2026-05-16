@@ -36,7 +36,7 @@ public:
 	virtual HRESULT Save(IStream* pStm) RX;
 	virtual void LoadFromINI(CCINIClass* pINI) RX; //Loads the map from a map file.
 	virtual const wchar_t* GetToolTip(UINT nDlgID) R0;
-	virtual void CloseWindow() RX; //prolly wrong naming
+	virtual void InitGUI() RX;
 	virtual void ClearDragBand() RX;
 	virtual bool MapCell(CellStruct* pMapCoord, HouseClass* pHouse) R0;
 	virtual bool RevealFogShroud(CellStruct* pMapCoord, HouseClass* pHouse, bool bIncreaseShroudCounter) R0;
