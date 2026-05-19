@@ -240,6 +240,7 @@
     <ClInclude Include="$(YRppDir)\ObjectTypeClass.h" />
     <ClInclude Include="$(YRppDir)\OverlayClass.h" />
     <ClInclude Include="$(YRppDir)\OverlayTypeClass.h" />
+    <ClInclude Include="$(YRppDir)\OwnerDraw.h" />
     <ClInclude Include="$(YRppDir)\PacketClass.h" />
     <ClInclude Include="$(YRppDir)\ParasiteClass.h" />
     <ClInclude Include="$(YRppDir)\ParticleClass.h" />
