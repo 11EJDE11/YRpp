@@ -167,6 +167,7 @@
     <ClInclude Include="$(YRppDir)\CopyProtection.h" />
     <ClInclude Include="$(YRppDir)\CRC.h" />
     <ClInclude Include="$(YRppDir)\CRT.h" />
+	<ClInclude Include="$(YRppDir)\Dictionary.h" /> 
     <ClInclude Include="$(YRppDir)\Dir.h" />
     <ClInclude Include="$(YRppDir)\DiscreteDistributionClass.h" />
     <ClInclude Include="$(YRppDir)\DiscreteSelectionClass.h" />
@@ -335,8 +336,7 @@
     <ClInclude Include="$(YRppDir)\WeaponTypeClass.h" />
     <ClInclude Include="$(YRppDir)\WinsockInterfaceClass.h" />
     <ClInclude Include="$(YRppDir)\WOLAPIInterfaces.h" />
-    <ClInclude Include="$(YRppDir)\Wstring.h" />
-	<ClInclude Include="$(YRppDir)\WWHashMap.h" />  
+    <ClInclude Include="$(YRppDir)\Wstring.h" /> 
     <ClInclude Include="$(YRppDir)\WWMessageBox.h" />
     <ClInclude Include="$(YRppDir)\WWMouseClass.h" />
     <ClInclude Include="$(YRppDir)\YRAllocator.h" />

@@ -4,7 +4,7 @@
 
 #include <Helpers/CompileTime.h>
 
-#include <WWHashMap.h>
+#include <Dictionary.h>
 #include <Unsorted.h>
 
 enum class WWControlType : int
@@ -66,14 +66,19 @@ enum WWControlMessage
 class OwnerDraw
 {
 public:
-	using HwndProcHashMap = WWHashMap<HWND, WNDPROC>;
-	using MsgHwndHashMap = WWHashMap<UINT, std::pair<HWND, bool>>;
-	using HwndDialogDataHashMap = WWHashMap<HWND, WWControlData>;
+	using HwndProcDict = Dictionary<HWND, WNDPROC>;
+	struct MsgInProcessGuard
+	{
+		HWND Hwnd;
+		bool InProcess;
+	};
+	using MsgInProcessDict = Dictionary<UINT, MsgInProcessGuard>;
+	using HwndControlDataDict = Dictionary<HWND, WWControlData>;
 
-	DEFINE_REFERENCE(HwndProcHashMap, DialogProcs, 0xAC1B48); // Windows control's default window procedures 
-	DEFINE_REFERENCE(HwndProcHashMap, SubclassProcs, 0xAC18C0); // Custom subclass procedures for owner-draw controls, 
-	DEFINE_REFERENCE(MsgHwndHashMap, MessageProcessedGuard, 0xAC18C0); // generic OwnerDraw::WindowProc preventing a message being processed multiple times
-	DEFINE_REFERENCE(HwndDialogDataHashMap, ControlData, 0xAC1B00); // Control data
+	DEFINE_REFERENCE(HwndProcDict, DialogProcs, 0xAC1B48); // Windows control's default window procedures 
+	DEFINE_REFERENCE(HwndProcDict, SubclassProcs, 0xAC18C0); // Custom subclass procedures for owner-draw controls, 
+	DEFINE_REFERENCE(MsgInProcessDict, MessageProcessedGuard, 0xAC18C0); // generic OwnerDraw::WindowProc preventing a message being processed multiple times
+	DEFINE_REFERENCE(HwndControlDataDict, ControlData, 0xAC1B00); // Control data
 
 	// WWControlType::Button
 	DEFINE_REFERENCE(WNDPROC, CheckBoxButtonHandler, 0x6163A0);
