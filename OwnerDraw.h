@@ -91,6 +91,11 @@ enum WWControlMessage : UINT
 class OwnerDraw
 {
 public:
+	DEFINE_REFERENCE(int, CachedSurfaceCount, 0xAC48B4);
+	DEFINE_REFERENCE(WORD, ColorShiftRed, 0xAC48B8);
+	DEFINE_REFERENCE(WORD, ColorShiftGreen, 0xAC48BA);
+	DEFINE_REFERENCE(WORD, ColorShiftBlue, 0xAC48BC);
+
 	using HwndProcDict = Dictionary<HWND, WNDPROC>;
 	struct MsgInProcessGuard
 	{
