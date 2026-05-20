@@ -1720,22 +1720,3 @@ enum class PCPType : unsigned char // Per_Cell_Process
 	During = 1,			// While moving between two cells. Is this ever used? Tell me if you found any
 	End = 2,			// When the 'center' of a cell is reached during movement.
 };
-
-//Westwood custom messages (e.g. for SendMessage)
-#define	WW_SLIDER_GETVALUE			0x400
-
-#define	WW_SLIDER_SETVALUE			0x405
-#define	WW_SLIDER_SETRANGE			0x406
-
-#define	WW_INITDIALOG				0x497
-#define	WW_SETCOLOR					0x498
-
-#define WW_BLITDDS					0x4A8 //lParam is some structure
-
-#define	WW_STATIC_SETTEXT			0x4B2
-
-#define WW_CB_GETITEMINDEX			0x4BE //wParam = 0; lParam = wchar_t* text;
-
-#define	WW_CB_ADDITEM				0x4C2 //wParam = int index; lParam = 0
-
-#define	WW_LB_ADDITEM				0x4CD
