@@ -7,6 +7,8 @@
 #include <Dictionary.h>
 #include <Unsorted.h>
 
+#include <cstring>
+
 enum class WWControlType : int
 {
 	Button = 0,
@@ -14,20 +16,24 @@ enum class WWControlType : int
 	Static = 2,
 	ComboBox = 3,
 	ListBox = 4,
-	Unknown5 = 5,
+	ColorTextInput = 5,	// Not seen anywhere but 11 seems to be default value and has same behavior as this one, leave 5 skipped seems weird so maybe this is it
 	Progress = 6,
 	TrackBar = 7,
 	ScrollBar = 8,
 	Hotkey = 9,
 	SysTab = 10,
-	ColorTextInput = 11
+	Default = 11
 };
 
-struct WWControlData
+struct WWWinData
 {
+	WWWinData() { JMP_THIS(0x623340); }
+
+	~WWWinData() { JMP_THIS(0x6233A0); }
+
 	char data[0x200];
 };
-static_assert(sizeof(WWControlData) == 0x200, "WWControlData size mismatch");
+static_assert(sizeof(WWWinData) == 0x200, "WWWinData size mismatch");
 
 enum WWControlMessage : UINT
 {
@@ -103,12 +109,12 @@ public:
 		bool InProcess;
 	};
 	using MsgInProcessDict = Dictionary<UINT, MsgInProcessGuard>;
-	using HwndControlDataDict = Dictionary<HWND, WWControlData>;
+	using HwndWinDataDict = Dictionary<HWND, WWWinData>;
 
 	DEFINE_REFERENCE(HwndProcDict, DialogProcs, 0xAC1B48); // Windows control's default window procedures 
 	DEFINE_REFERENCE(HwndProcDict, SubclassProcs, 0xAC18C0); // Custom subclass procedures for owner-draw controls, 
 	DEFINE_REFERENCE(MsgInProcessDict, MessageProcessedGuard, 0xAC18C0); // generic OwnerDraw::WindowProc preventing a message being processed multiple times
-	DEFINE_REFERENCE(HwndControlDataDict, ControlData, 0xAC1B00); // Control data
+	DEFINE_REFERENCE(HwndWinDataDict, WinData, 0xAC1B00); // Windata - "ComboBox dropdown windata = NULL\n"
 
 	// WWControlType::Button
 	DEFINE_REFERENCE(WNDPROC, CheckBoxButtonHandler, 0x6163A0);
@@ -137,7 +143,20 @@ public:
 	// WWControlType::ColorTextInput
 	DEFINE_REFERENCE(WNDPROC, ColorTextInputHandler, 0x612A60);
 
+	// Westwood Registered extra handlers
+	// ComboDropWin
+	DEFINE_REFERENCE(WNDPROC, ComboDropWindowHandler, 0x60D540);
+	// NewEdit uses DefWindowProcA here, doesnt matter cause OwnerDraw above did it
+	DEFINE_REFERENCE(WNDPROC, NewEditDefaultHandler, 0x60D520);
+
 	DEFINE_REFERENCE(WNDPROC, DefaultHandler, 0x610CA0); // Generic handler which call the handles above
 
-
+	// Get rectangle relative to game main window's client area
+	static int __fastcall GetRectangle(HWND hWnd, LPRECT lpRect) { JMP_STD(0x775690); }
 };
+
+namespace SessionIpb
+{
+	inline void __fastcall RegisterHwnd(HWND hWnd) { JMP_STD(0x53E3C0); }
+	inline void __fastcall UnregisterHwnd(HWND hWnd) { JMP_STD(0x53E420); }
+}

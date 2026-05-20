@@ -171,7 +171,7 @@ public:
 	bool insert(const K& key, const V& value)
 	{
 		auto item = GameCreate<Node>(key, value, nullptr);
-		remove(key);
+		erase(key);
 
 		auto offset = key_hash(key);
 		auto node = Table[offset];
@@ -238,7 +238,7 @@ public:
 		node = node->Next;
 
 		// Now the case if the thing to delete is not the first
-		while (!node)
+		while (node)
 		{
 			if (node->Key == key)
 			{
