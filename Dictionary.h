@@ -209,7 +209,7 @@ public:
 		return nullptr;
 	}
 
-	bool remove(const K& key)
+	bool erase(const K& key)
 	{
 		if (!Count)
 			return false;
