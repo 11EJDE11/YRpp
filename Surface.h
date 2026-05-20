@@ -147,6 +147,7 @@ public:
 	DEFINE_REFERENCE(BSurface, VoxelSurface, 0xB2D928)
 
 	BSurface() : XSurface(), Buffer { this->Width * this->Height * 2 } { BytesPerPixel = 2; ((int*)this)[0] = 0x7E2070; }
+	BSurface(int width, int height) : XSurface { width, height }, Buffer { width * height * 2 } { BytesPerPixel = 2; ((int*)this)[0] = 0x7E2070; }
 
 	MemoryBuffer Buffer;
 };
