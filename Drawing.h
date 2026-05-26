@@ -11,6 +11,10 @@
 #include <Helpers/CompileTime.h>
 #include <Surface.h>
 
+class VoxLib;
+template<typename T>
+class Vector3D;
+
 #pragma pack(push, 1)
 class RGBClass
 {
@@ -137,6 +141,8 @@ public:
 	DEFINE_REFERENCE(bool, AllowSoftwareBlitFills, 0x8205D4)
 	DEFINE_REFERENCE(bool, AllowSoftwareBlitStretch, 0x8A0DEE)
 
+	DEFINE_REFERENCE(Matrix3D, VoxelTransformMatrix, 0x887430);
+
 	//TextBox dimensions for tooltip-style boxes
 	static RectangleStruct* __fastcall GetTextDimensions(
 		RectangleStruct* pOutBuffer, wchar_t const* pText, Point2D location,
@@ -221,6 +227,28 @@ public:
 		ColorStruct ret;
 		Int_To_RGB(color, ret);
 		return ret;
+	}
+
+	static char __fastcall SetupVoxelDoubleLighting(
+		VoxLib* VXL,
+		int a2,
+		int a3,
+		Matrix3D* pA,
+		Matrix3D* pTransform,
+		Vector3D<float>* pLightSrc,
+		float fIntensity)
+	{
+		JMP_STD(0x753D00);
+	}
+
+	static char __fastcall SetupVoxelSingleLighting(
+		VoxLib* VXL,
+		int a2,
+		int a3,
+		Matrix3D* pMatrix,
+		Vector3D<float>* pLightSrc)
+	{
+		JMP_STD(0x753C80);
 	}
 };
 
