@@ -9,11 +9,13 @@
   <!-- Header files -->
   <ItemGroup>
     <!-- Blitters -->
+	<ClInclude Include="$(YRppDir)\Blitters\BlitPlain.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlat.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatAlpha.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatZRead.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatZReadWrite.h" />
     <ClInclude Include="$(YRppDir)\Blitters\Blitter.h" />
+	<ClInclude Include="$(YRppDir)\Blitters\BlitTrans.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitTransDarken.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitTransDarkenZRead.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitTransDarkenZReadWrite.h" />

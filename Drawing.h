@@ -191,6 +191,17 @@ public:
 		return buffer;
 	}
 
+	// Perform rectangle clipping in preparation for a blit.
+	static bool __fastcall BlitClip(RectangleStruct& drect, const RectangleStruct& dwindow, RectangleStruct& srect, const RectangleStruct& swindow)
+	{
+		JMP_STD(0x7BBE20);
+	}
+
+	static bool __fastcall BitBlit(Surface* dest, RectangleStruct* destrect, Surface* source, RectangleStruct* sourcerect, void* blitter, int z, ZGradient zgrad, int a, int tint)
+	{
+		JMP_STD(0x437350);
+	}
+
 	/*
 	static int __fastcall RGB_To_Int(int red, int green, int blue)
 	{ JMP_STD(0x4355D0); }
