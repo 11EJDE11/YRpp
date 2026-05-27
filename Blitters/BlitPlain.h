@@ -14,7 +14,7 @@ public:
 	virtual void Blit_Copy(void* dst, byte * src, int len, int zval, WORD * zbuf, WORD * abuf, int alvl, int warp) override final
 	{
 		for (int i = 0; i < len; ++i)
-			reinterpret_cast<T*>(dst)[i] = static_cast<T>(src[i]);
+			reinterpret_cast<T*>(dst)[i] = reinterpret_cast<T*>(src)[i];
 	}
 
 	virtual void Blit_Copy_Tinted(void* dst, byte * src, int len, int zval, WORD * zbuf, WORD * abuf, int alvl, int warp, WORD tint)
