@@ -83,44 +83,46 @@ protected:
 public:
 
 	DECLARE_PROPERTY(StageClass, Animation);
-	AnimTypeClass* Type; //The AnimType.
-	ObjectClass * OwnerObject; // set by AnimClass::SetOwnerObject (0x424B50)
-	DWORD unknown_D0;
-	LightConvertClass* LightConvert;	 //Palette?
+	AnimTypeClass* Type; // AnimTypeClass.
+	ObjectClass * OwnerObject; // Set by AnimClass::SetOwnerObject (0x424B50)
+	DWORD unknown_D0; // Only set in CTOR/DTOR, never used. Used in Phobos for storing AnimExt::ExtData pointer.
+	LightConvertClass* LightConvert; // Palette from building for building animations.
 	int LightConvertIndex; // assert(ColorScheme::Array[this->LightConvertIndex] == this->LightConvert);
-	char PaletteName[0x20]; // filename set for destroy anims
+	char PaletteName[0x20]; // Filename set for destroy anims
 	int TintColor;
 	int ZAdjust;
-	int YSortAdjust; // same as YSortAdjust from Type
-	CoordStruct FlamingGuyCoords; // the destination the anim tries to reach
-	int FlamingGuyRetries; // number of failed attemts to reach water. the random destination generator stops if >= 7
-	bool IsBuildingAnim; // whether this anim will invalidate on buildings, and whether it's tintable
-	bool UnderTemporal; // temporal'd building's active anims
-	bool Paused; // if paused, does not advance anim, does not deliver damage
-	bool Unpaused; // set when unpaused
-	int PausedAnimFrame; // the animation value when paused
-	bool Reverse; // anim is forced to be played from end to start
-	DWORD unknown_124;
+	int YSortAdjust; // Same as YSortAdjust from Type
+	CoordStruct FlamingGuyCoords; // The destination the anim tries to reach
+	int FlamingGuyRetries; // Number of failed attemts to reach water. the random destination generator stops if >= 7
+	bool IsBuildingAnim; // Whether this anim will invalidate on buildings, and whether it's tintable
+	bool UnderTemporal; // Ttemporal'd building's active anims
+	bool Paused; // If paused, does not advance anim, does not deliver damage
+	bool Unpaused; // Set when unpaused
+	int PausedAnimFrame; // The animation value when paused
+	bool Reverse; // Anim is forced to be played from end to start
+	PROTECTED_PROPERTY(BYTE, padding_121[0x7]);
 	DECLARE_PROPERTY(BounceClass, Bounce);
-	BYTE TranslucencyLevel; // on a scale of 1 - 100
-	bool TimeToDie; // or something to that effect, set just before UnInit
+	BYTE TranslucencyLevel; // On a scale of 1 - 100
+	bool TimeToDie; // Or something to that effect, set just before UnInit
 	BulletClass* AttachedBullet;
-	HouseClass* Owner; //Used for remap (AltPalette).
-	int LoopDelay; // randomized value, depending on RandomLoopDelay
+	HouseClass* Owner; // Used for remap (AltPalette)
+	int LoopDelay; // Randomized value, depending on RandomLoopDelay
 	double Accum; // Stores accumulated fractional animation damage and gets added to Type->Damage if at least 1.0 or above. Defaults to 1.0.
-	BlitterFlags AnimFlags; // argument that's 0x600 most of the time
-	bool HasExtras; // enables IsMeteor and Bouncer special behavior (AnimExtras)
-	byte RemainingIterations; // defaulted to deleteAfterIterations, when reaches zero, UnInit() is called
-	byte unknown_196;
-	byte unknown_197;
+	BlitterFlags AnimFlags; // Argument that's 0x600 most of the time
+	bool HasExtras; // Enables IsMeteor and Bouncer special behavior (AnimExtras)
+	byte RemainingIterations; // Defaulted to deleteAfterIterations, when reaches zero, UnInit() is called
+	bool UseCellLightConvert; // If set to true checks cell at render coords and uses its LightConvert if available
+	bool DeleteOnMapCleanup;  // Set on tile anims, anims are deleted in MapClass::Overpass() (0x568BB0)
 	bool IsInert; // Not official name, only set to true on TActionClass-created animations and prevents sounds, damage and TiberiumChainReaction from working.
 	bool IsFogged;
-	bool FlamingGuyExpire; // finish animation and remove
-	bool UnableToContinue; // set when something prevents the anim from going on: cell occupied, veins destoyed or unit gone, ...
-	bool SkipProcessOnce; // set in constructor, cleared during Update. skips damage, veins, tiberium chain reaction and animation progress
-	bool Invisible; // don't draw, but Update state anyway
-	bool PowerOff; // powered animation has no power
+	bool FlamingGuyExpire; // Finish animation and remove
+	bool UnableToContinue; // Set when something prevents the anim from going on: cell occupied, veins destoyed or unit gone, ...
+	bool SkipProcessOnce; // Set in constructor, cleared during Update. skips damage, veins, tiberium chain reaction and animation progress
+	bool Invisible; // Don't draw, but Update state anyway
+	bool PowerOff; // Powered animation has no power
 	PROTECTED_PROPERTY(BYTE, unused_19F);
-	DECLARE_PROPERTY(AudioController, Audio3);
-	DECLARE_PROPERTY(AudioController, Audio4);
+	DECLARE_PROPERTY(AudioController, StartSoundAudioController);
+	DECLARE_PROPERTY(AudioController, StopSoundAudioController);
 };
+
+static_assert(sizeof(AnimClass) == 0x1C8);
