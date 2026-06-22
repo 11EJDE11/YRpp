@@ -1089,6 +1089,17 @@ enum class PrismChargeState : int
 	Slave = 2
 };
 
+enum class TankBunkerState : int
+{
+	Idle = 0,            // Waiting for tank to be positioned inside bunker
+	CheckOccupants = 1,  // Verify occupied cells / clear blockers
+	RotateToTrack = 2,   // Rotate tank to forced track direction
+	MoveOnTrack = 3,     // Force-track movement into final position
+	RotateInBunker = 4,  // Rotate to fixed bunker facing
+	RaiseWalls = 5,      // Raise bunker walls / play deployment anims
+	Bunkered = 6         // Fully bunkered and linked
+};
+
 enum class RadarEventType : int
 {
 	Combat = 0,

@@ -352,5 +352,5 @@ public:
 	CoordStruct PrismTargetCoords;
 	DWORD DelayBeforeFiring;
 
-	int BunkerState; // used in UpdateBunker and friends
+	TankBunkerState TankBunkerState; // used in UpdateBunker and friends
 };
