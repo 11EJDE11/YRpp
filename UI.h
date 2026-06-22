@@ -19,4 +19,8 @@ public:
 	static void __fastcall CenterWindow(HWND hWnd) JMP_STD(0x777060)
 	static void __fastcall RegisterWindow(HWND hWnd, LPARAM msg) JMP_STD(0x622820)
 	static void __fastcall GetKeyboardKeyString(unsigned short key, wchar_t* buffer) JMP_STD(0x61EF70)
+	// Fills lpRect with a dialog control's rectangle in display (surface)
+	// coordinates, accounting for the full-screen owner-draw scaling. This is
+	// how the engine's reconnect dialog positions its per-player sync bars.
+	static void __fastcall GetDisplayRect(HWND hWnd, LPRECT lpRect) JMP_STD(0x775690)
 };

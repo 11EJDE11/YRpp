@@ -739,6 +739,13 @@ namespace Unsorted
 
 	DEFINE_REFERENCE(bool, ScenarioStarted, 0xA8ED5C)
 
+	// Whether the tactical map is being updated/drawn. Cleared to halt the
+	// battlefield behind a full-screen dialog and restored afterwards.
+	DEFINE_REFERENCE(bool, TacticalActive, 0xA8E378)
+
+	// Locks the game's own input processing so a modal dialog owns input.
+	DEFINE_REFERENCE(bool, UserInputLocked, 0xA8ED9C)
+
 	DEFINE_REFERENCE(HANDLE, AppMutex, 0xB0BCE4)
 };
 
