@@ -259,6 +259,13 @@ public:
 		return ret;
 	}
 
+	CoordStruct GetDockCoords(TechnoClass* docker) const
+	{
+		CoordStruct ret;
+		this->GetDockCoords(&ret, docker);
+		return ret;
+	}
+
 	CoordStruct GetFLH(int idxWeapon, const CoordStruct& base) const {
 		CoordStruct ret;
 		this->GetFLH(&ret, idxWeapon, base);
