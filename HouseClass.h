@@ -496,8 +496,15 @@ public:
 		return this->IsHumanPlayer || this->IsInPlayerControl;
 	}
 
-	// Target ought to be Object, I imagine, but cell doesn't work then
-	void __fastcall SendSpyPlanes(int AircraftTypeIdx, int AircraftAmount, Mission SetMission, AbstractClass *Target, ObjectClass *Destination)
+	void __fastcall SendParadropPlanes(int aircraftTypeIdx, int aircraftCount, Mission mission, AbstractClass* pTarget, AbstractClass* pDestination,
+		int infantryTypeIdx, int infantryCount)
+		{ JMP_STD(0x65E660); }
+
+	void __fastcall SendAirstrikePlanes(int aircraftTypeIdx, int aircraftCount, Mission mission, AbstractClass* pTarget, AbstractClass* pDestination,
+		int infantryTypeIdx, int infantryCount, AirstrikeClass* pSender)
+		{ JMP_STD(0x65E850); }
+
+	void __fastcall SendSpyPlanes(int aircraftTypeIdx, int aircraftCount, Mission mission, AbstractClass* pTarget, AbstractClass* pDestination)
 		{ JMP_STD(0x65EAB0); }
 
 	// registering in prereq counters (all technoes get logged, but only buildings get checked on validation... wtf)
