@@ -297,10 +297,19 @@ public:
 	void RespawnStartingForces()
 		{ JMP_THIS(0x50D440); }
 
+	// flags the house to be defeated once its borrowed time expires,
+	// unless it is already flagged to win, lose or die
+	bool FlagToDie()
+		{ JMP_THIS(0x4FC980); }
+
 	BYTE Win(bool bSavourSomething)
 		{ JMP_THIS(0x4FC9E0); }
 	BYTE Lose(bool bSavourSomething)
 		{ JMP_THIS(0x4FCBD0); }
+
+	// counts human-controlled houses other than this one that are not yet defeated
+	int CountOtherUndefeatedHumanHouses() const
+		{ JMP_THIS(0x5E2BA0); }
 
 	void RegisterJustBuilt(TechnoClass* pTechno)
 		{ JMP_THIS(0x4FB6B0); }
