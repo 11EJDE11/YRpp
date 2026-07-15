@@ -120,10 +120,10 @@ public:
 	bool unknown_bool_11CC;
 	bool unknown_bool_11CD;
 	bool unknown_bool_11CE;
-	bool DraggingRectangle;
+	bool LeftPressAndDraggingRectangle;
 	bool unknown_bool_11D0;
 	bool unknown_bool_11D1;
-	Point2D unknown_11D4;
+	Point2D LeftDownPosition;
 	Point2D unknown_11DC;
 	PROTECTED_PROPERTY(DWORD, padding_11E4);
 };
