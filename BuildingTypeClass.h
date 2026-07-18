@@ -143,7 +143,7 @@ public:
 	CoordStruct TargetCoordOffset;
 	CoordStruct ExitCoord;
 	CellStruct* FoundationOutside;
-	int field_ED8;
+	int StartFacing;
 	int DeployFacing;
 	int PowerBonus;
 	int PowerDrain;
