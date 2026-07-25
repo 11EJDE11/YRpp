@@ -45,6 +45,10 @@ public:
 	static bool __fastcall IsBuildCat5(AbstractType abstractID, int idx)
 		{ JMP_STD(0x5004E0); }
 
+	// the same thunk as IsBuildCat5, with the return type the value actually has
+	static BuildCat __fastcall GetBuildCat(AbstractType abstractID, int idx)
+		{ JMP_STD(0x5004E0); }
+
 	static TechnoTypeClass * __fastcall GetTechnoType(AbstractType abstractID, int idx)
 		{ JMP_STD(0x48DCD0); }
 

@@ -295,7 +295,10 @@ public:
 	bool ConcentricRadialIndicator;
 	int PsychicDetectionRadius;
 	int BarrelStartPitch;
-	char VoxelBarrelFile [0x1C];
+	char VoxelBarrelFile [0x14];
+
+	double VoxelBarrelScale;
+
 	CoordStruct VoxelBarrelOffsetToPitchPivotPoint;
 	CoordStruct VoxelBarrelOffsetToRotatePivotPoint;
 	CoordStruct VoxelBarrelOffsetToBuildingPivotPoint;
@@ -315,3 +318,6 @@ public:
 	VectorClass<CoordStruct> DockingOffsets;
 private: DWORD align_1794;
 };
+
+static_assert(offsetof(BuildingTypeClass, VoxelBarrelScale) == 0x1728, "BuildingTypeClass::VoxelBarrelScale moved");
+static_assert(offsetof(BuildingTypeClass, VoxelBarrelFile) == 0x1714, "BuildingTypeClass::VoxelBarrelFile moved");

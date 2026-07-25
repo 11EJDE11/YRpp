@@ -189,11 +189,15 @@ static Point2D* Fancy_Text_Print_Wide(const Point2D& retBuffer, const wchar_t* T
 #pragma warning(pop)
 
 
-//static Point2D* __fastcall Simple_Text_Print_Wide(Point2D* RetVal, const wchar_t* Text, Surface* Surface, RectangleStruct* Bounds,
-//	Point2D* Location, COLORREF ForeColor, COLORREF BackColor, TextPrintType Flag, bool bUkn)
-//{
-//	JMP_STD(0x4A5EB0);
-//}
+// takes a plain string; Fancy_Text_Print_Wide (0x4A60E0) is the formatting wrapper
+// that calls this. A second overload at 0x4A6010 takes a ColorScheme* in place of
+// the two colour dwords.
+inline Point2D* __fastcall Simple_Text_Print_Wide(
+	Point2D* pRetVal, const wchar_t* pText, Surface* pSurface,
+	RectangleStruct* pBounds, Point2D* pLocation,
+	unsigned int nForeColor, unsigned int nBackColor,
+	TextPrintType nFlags, int nUnused)
+		{ JMP_STD(0x4A5EB0); }
 
 class NOVTABLE DSurface : public XSurface
 {

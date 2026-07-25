@@ -33,3 +33,21 @@ struct BasePlanningCellContainer {
 	static int __cdecl Comparator(const void *, const void *)
 		{ JMP_STD(0x5108F0); }
 };
+// element type of the game's name/value tables, e.g. the pip table at 0x81B958
+struct NamedValue {
+	const char* Name;
+	int Value;
+
+	bool operator == (int value) const {
+		return this->Value == value;
+	}
+
+	bool operator == (const char* name) const {
+		return !_strcmpi(this->Name, name);
+	}
+
+	bool operator == (const NamedValue& other) const {
+		return this->Value == other.Value && *this == other.Name;
+	}
+};
+

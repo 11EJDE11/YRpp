@@ -380,6 +380,10 @@ public:
 	bool CoordinatesLegal(const CellStruct& cell) const
 		{ JMP_THIS(0x568300); }
 
+	// In_Map_Coord: the same bounds test, in leptons
+	bool CoordinatesLegal(const CoordStruct& coords) const
+		{ JMP_THIS(0x568350); }
+
 	bool IsLinkedBridgeDestroyed(const CellStruct& cell) const
 		{ JMP_THIS(0x587410); }
 

@@ -848,7 +848,7 @@ public:
 	double			 RepairRate;
 	double			 URepairRate;
 	double			 IRepairRate;
-	double			 unknown_double_16F8;	//1.875
+	double			 ConditionGreen;	//1.875
 	double			 ConditionYellow;
 	double			 ConditionRed;
 	double			 IdleActionFrequency;

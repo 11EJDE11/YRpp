@@ -705,6 +705,16 @@ public:
 	FactoryClass* GetPrimaryFactory(AbstractType absID, bool naval, BuildCat buildCat) const
 		{ JMP_THIS(0x500510); }
 
+	// zone: 0 = core, 1 = north, 2 = east, 3 = south, 4 = west
+	CellStruct* PickRandomCellInZone(CellStruct& outBuffer, int zone) const
+		{ JMP_THIS(0x501AC0); }
+
+	CellStruct PickRandomCellInZone(int zone) const {
+		CellStruct outBuffer;
+		this->PickRandomCellInZone(outBuffer, zone);
+		return outBuffer;
+	}
+
 	void SetPrimaryFactory(FactoryClass* pFactory, AbstractType absID, bool naval, BuildCat buildCat)
 		{ JMP_THIS(0x500850); }
 

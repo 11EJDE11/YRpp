@@ -12,7 +12,7 @@ struct BuildType
 {
 	int               ItemIndex{ -1 };
 	AbstractType      ItemType{ AbstractType::None };
-	bool              IsAlt{ false }; // set on buildings that go on tab 2
+	BYTE              IsAlt{ 0 }; // the BuildCat of buildings, 0 for everything else
 	FactoryClass*     CurrentFactory{ nullptr };
 	DWORD             unknown_10{ 0 };
 	StageClass        Progress{}; // 0 to 54, how much of this object is constructed (gclock anim level)
@@ -41,6 +41,52 @@ struct BuildType
 		{ JMP_STD(0x6A8420); }
 };
 
+struct StripClass;
+
+// the per-cameo button; an array of 4 strips times 60 buttons, stride 0x38
+struct SelectClass
+{
+	static SelectClass* Array()
+		{ return reinterpret_cast<SelectClass*>(0xB07E80); }
+
+	// horizontal distance between the two cameo columns
+	static int CameoPitchX()
+		{ return *reinterpret_cast<int*>(0xB0B4FC); }
+
+	// vertical distance between two cameo rows
+	static int CameoPitchY()
+		{ return *reinterpret_cast<int*>(0xB0B500); }
+
+	enum { ButtonID = 202, CameoWidth = 60, CameoHeight = 48 };
+
+	void Zap()
+		{ JMP_THIS(0x5565F0); }
+
+	void* VTable;
+	SelectClass* Next;
+	SelectClass* Previous;
+	int X;
+	int Y;
+	int Width;
+	int Height;
+	DWORD Flags;
+	DWORD Status;
+	unsigned int ID;
+	SelectClass* SendTo;
+	StripClass* Strip;
+	int Index;
+
+	// unidentified, but it has to exist: without it the stride is 0x34 and Array()[i] walks short
+	DWORD unknown_34;
+};
+
+static_assert(sizeof(SelectClass) == 0x38, "SelectClass must match the game's array stride");
+static_assert(offsetof(SelectClass, X) == 0x0C, "SelectClass layout slipped");
+static_assert(offsetof(SelectClass, Width) == 0x14, "SelectClass layout slipped");
+static_assert(offsetof(SelectClass, ID) == 0x24, "SelectClass layout slipped");
+static_assert(offsetof(SelectClass, Strip) == 0x2C, "SelectClass layout slipped");
+static_assert(offsetof(SelectClass, Index) == 0x30, "SelectClass layout slipped");
+
 // SidebarClass::StripClass
 struct StripClass
 {
@@ -51,16 +97,31 @@ struct StripClass
 	RectangleStruct   Bounds;
 	int               Index; // the index of this tab
 	bool              NeedsRedraw;
-	BYTE              unknown_3D;
-	BYTE              unknown_3E;
-	BYTE              unknown_3F;
-	DWORD             unknown_40;
+	bool              IsBuilding;
+	bool              IsScrollingDown;
+	bool              IsScrolling;
+	int               Flasher;
 	int               TopRowIndex; // scroll position, which row is topmost visible
-	DWORD             unknown_48;
-	DWORD             unknown_4C;
-	DWORD             unknown_50;
+	int               Scroller;
+	int               Slid;
+	int               LastSlid;
 	int               CameoCount; // filled cameos
 	BuildType         Cameos[75];
+
+	void Initialize(int index)
+		{ JMP_THIS(0x6A8220); }
+
+	void Activate()
+		{ JMP_THIS(0x6A8330); }
+
+	void Deactivate()
+		{ JMP_THIS(0x6A83E0); }
+
+	void AddButtons()
+		{ JMP_THIS(0x6A93F0); }
+
+	void RemoveButtons()
+		{ JMP_THIS(0x6A94B0); }
 };
 
 class NOVTABLE SidebarClass : public PowerClass
@@ -118,6 +179,14 @@ public:
 
 	void BlitSidebar(bool force)
 		{ JMP_THIS(0x6A70E0); }
+
+	// enables or disables the two scroll buttons
+	void UpdateScrollButtons()
+		{ JMP_THIS(0x6A6610); }
+
+	// how many cameo buttons fit on the strip at the current resolution
+	int GetVisibleCameoCount()
+		{ JMP_THIS(0x6AC430); }
 
 protected:
 	//Constructor
