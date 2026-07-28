@@ -576,6 +576,9 @@ public:
 	bool TargetingTimerFinished()
 		{ JMP_THIS(0x70F7E0); }
 
+	bool CanOpportunityFire()
+	{ JMP_THIS(0x709290); }
+
 	//Constructor
 	TechnoClass(HouseClass* pOwner) noexcept
 		: TechnoClass(noinit_t())
@@ -739,7 +742,7 @@ public:
 	bool             HasBeenAttacked; // ReceiveDamage when not HouseClass_IsAlly
 	bool             Cloakable;
 	bool             IsPrimaryFactory; // doubleclicking a warfac/barracks sets it as primary
-	bool             Spawned;
+	bool             IsALoaner;
 	bool             IsInPlayfield;
 	DECLARE_PROPERTY(RecoilData, TurretRecoil);
 	DECLARE_PROPERTY(RecoilData, BarrelRecoil);
