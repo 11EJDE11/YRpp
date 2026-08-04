@@ -4,8 +4,36 @@
 
 class ConnManClassVtbl;
 class CommBufferClass;
-class GlobalHeaderType;
-class CommHeaderType;
+
+enum class ConnectionEnum : unsigned char
+{
+	PACKET_DATA_ACK = 0,
+	PACKET_DATA_NOACK = 1,
+};
+
+#pragma pack(push, 1)
+struct CommHeaderType
+{
+	__int16 MagicNumber;
+	ConnectionEnum Code;
+	char forwardto;
+	int PacketID;
+	char field_8;
+	char field_9;
+	char field_A;
+	char field_B;
+	char field_C;
+	char field_D;
+};
+#pragma pack(pop)
+static_assert(sizeof(CommHeaderType) == 14);
+
+struct GlobalHeaderType
+{
+	CommHeaderType Header;
+	__int16 ProductID;
+};
+static_assert(sizeof(GlobalHeaderType) == 16);
 
 class ConnectionClass
 {
