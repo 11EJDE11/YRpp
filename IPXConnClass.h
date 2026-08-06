@@ -9,7 +9,7 @@ class NOVTABLE IPXConnClass : public ConnectionClass
 public:
 	enum IPXConnTag
 	{
-		CONN_NAME_MAX = 40 // max number of chars allowed for a connection name
+		CONN_NAME_MAX = 40
 	};
 
 	DEFINE_REFERENCE(WORD, Socket, 0xAA0568)
@@ -40,7 +40,6 @@ protected:
 	virtual int Send_To_Address(CommHeaderType* buf, int buflen, IPXAddressClass* address, NetNodeType* nodeOverride, bool isGlobalConn, __int16 port)
 		{ JMP_THIS(0x53F650); }
 
-	// Properties
 public:
 	IPXAddressClass Address;
 	NetNodeType ImmediateAddress;
