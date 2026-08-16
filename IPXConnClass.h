@@ -45,8 +45,8 @@ public:
 	NetNodeType ImmediateAddress;
 	PROTECTED_PROPERTY(BYTE, align_5E[0x2]);
 
-	DWORD Immed_Set;
-	DWORD ID;
+	int Immed_Set;
+	int ID;
 	wchar_t Name[CONN_NAME_MAX];
 };
 static_assert(sizeof(IPXConnClass) == 0xB8);
