@@ -23,7 +23,7 @@ public:
 	virtual int Send_Packet(void* buf, int buflen, IPXAddressClass* address, int ack_req, __int16 port, int packet_id)
 		{ JMP_THIS(0x53FBD0); }
 
-	virtual int Receive_Packet(GlobalHeaderType* buf, int buflen, IPXAddressClass* address, __int16 port)
+	virtual int Receive_Packet(void* buf, int buflen, IPXAddressClass* address, __int16 port)
 		{ JMP_THIS(0x53FCB0); }
 
 	virtual int Get_Packet(void* buf, int* buflen, IPXAddressClass* address, WORD* product_id)

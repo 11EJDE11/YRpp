@@ -46,15 +46,6 @@ struct CommHeaderType
 #pragma pack(pop)
 static_assert(sizeof(CommHeaderType) == 14);
 
-// The header used by IPXGlobalConnClass. It adds a product ID so several
-// applications can share one socket and still tell their own packets apart.
-struct GlobalHeaderType
-{
-	CommHeaderType Header;
-	__int16 ProductID;
-};
-static_assert(sizeof(GlobalHeaderType) == 16);
-
 class NOVTABLE ConnectionClass
 {
 public:
@@ -111,7 +102,7 @@ public:
 	int MissedOverall;
 	int MissedMagic;
 	DWORD MaxPacketLen; // includes the CommHeaderType
-	GlobalHeaderType* PacketBuf;
+	CommHeaderType* PacketBuf;
 	WORD MagicNum;
 	DWORD RetryDelta; // delay before a packet is re-sent
 	DWORD MaxRetries;
