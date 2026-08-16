@@ -20,25 +20,25 @@ public:
 	virtual int Get_Packet(void* buf, int* buflen) override
 		{ JMP_THIS(0x540650); }
 
-	virtual int Send_Packet(void* buf, int buflen, IPXAddressClass* address, int ack_req, __int16 port, int packet_id)
+	virtual int Send_Packet(void* buf, int buflen, IPXAddressClass* address, int ack_req, short port, int packet_id)
 		{ JMP_THIS(0x53FBD0); }
 
-	virtual int Receive_Packet(void* buf, int buflen, IPXAddressClass* address, __int16 port)
+	virtual int Receive_Packet(void* buf, int buflen, IPXAddressClass* address, short port)
 		{ JMP_THIS(0x53FCB0); }
 
-	virtual int Get_Packet(void* buf, int* buflen, IPXAddressClass* address, WORD* product_id)
+	virtual int Get_Packet(void* buf, int* buflen, IPXAddressClass* address, unsigned short* product_id)
 		{ JMP_THIS(0x53FF10); }
 
-	virtual int Peek_Packet(int index, void* buf, int* buflen, IPXAddressClass* address, WORD* product_id, int* packet_id)
+	virtual int Peek_Packet(int index, void* buf, int* buflen, IPXAddressClass* address, unsigned short* product_id, int* packet_id)
 		{ JMP_THIS(0x53FFA0); }
 
 	virtual int Mark_Packet_Read(int index)
 		{ JMP_THIS(0x540030); }
 
-	virtual int Purge_Send_Queue_To(IPXAddressClass* address, __int16 port)
+	virtual int Purge_Send_Queue_To(IPXAddressClass* address, short port)
 		{ JMP_THIS(0x540340); }
 
-	virtual void Strip_Packets(DWORD age)
+	virtual void Strip_Packets(unsigned int age)
 		{ JMP_THIS(0x540110); }
 
 	void Set_Bridge(NetNumType* bridge)
@@ -49,13 +49,13 @@ protected:
 		{ JMP_THIS(0x5402D0); }
 	virtual int Service_Receive_Queue() override
 		{ JMP_THIS(0x5400D0); }
-	virtual int Send(CommHeaderType* buf, int buflen, void* extrabuf, int extralen, bool isGlobalConn, __int16 port) override
+	virtual int Send(CommHeaderType* buf, int buflen, void* extrabuf, int extralen, bool isGlobalConn, short port) override
 		{ JMP_THIS(0x540050); }
-	virtual int Send_To_Address(CommHeaderType* buf, int buflen, IPXAddressClass* address, NetNodeType* nodeOverride, bool isGlobalConn, __int16 port) override
+	virtual int Send_To_Address(CommHeaderType* buf, int buflen, IPXAddressClass* address, NetNodeType* nodeOverride, bool isGlobalConn, short port) override
 		{ JMP_THIS(0x5403F0); }
 
 public:
-	__int16 ProductID;
+	unsigned short ProductID;
 
 	NetNumType BridgeNet;
 	NetNodeType BridgeNode;
