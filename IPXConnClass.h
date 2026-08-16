@@ -43,7 +43,6 @@ protected:
 public:
 	IPXAddressClass Address;
 	NetNodeType ImmediateAddress;
-	PROTECTED_PROPERTY(BYTE, align_5E[0x2]);
 
 	int Immed_Set;
 	int ID;

@@ -61,7 +61,6 @@ public:
 	NetNodeType BridgeNode;
 	int IsBridge;
 	bool field_C8;
-	PROTECTED_PROPERTY(BYTE, align_C9[0x3]);
 	IPXAddressClass* LastAddress;
 	int* LastPacketID;
 	int LastCount;
