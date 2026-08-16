@@ -27,21 +27,17 @@ enum class ConnectionEnum : unsigned char
 };
 
 // The header prefixed to every packet the connection sends. YR widened RA's
-// 7-byte header to 14 bytes; `forwardto` holds the packet router forwarding
+// 7-byte header to 14 bytes; `ForwardTo` holds the packet router forwarding
 // mask and is only filled in for internet games routed via the packet router.
 #pragma pack(push, 1)
 struct CommHeaderType
 {
 	short MagicNumber;
 	ConnectionEnum Code;
-	char forwardto;
+	char ForwardTo;
 	int PacketID;
-	char field_8;
-	char field_9;
-	char field_A;
-	char field_B;
-	char field_C;
-	char field_D;
+	int field_8;
+	short field_C;
 };
 #pragma pack(pop)
 static_assert(sizeof(CommHeaderType) == 14);
