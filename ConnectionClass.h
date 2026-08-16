@@ -32,7 +32,7 @@ enum class ConnectionEnum : unsigned char
 #pragma pack(push, 1)
 struct CommHeaderType
 {
-	__int16 MagicNumber;
+	short MagicNumber;
 	ConnectionEnum Code;
 	char forwardto;
 	int PacketID;
@@ -75,7 +75,7 @@ public:
 
 	// Returns the current time in 60ths of a second, which is the unit the
 	// retry logic works in.
-	static DWORD Time()
+	static unsigned int Time()
 		{ JMP_STD(0x48C600); }
 
 protected:
@@ -91,7 +91,7 @@ protected:
 
 	// Performs the hardware-dependent send. Pure virtual, and protected
 	// because only the ACK/retry logic calls it, never the application.
-	virtual int Send(CommHeaderType* buf, int buflen, void* extrabuf, int extralen, bool isGlobalConn, __int16 port) = 0;
+	virtual int Send(CommHeaderType* buf, int buflen, void* extrabuf, int extralen, bool isGlobalConn, short port) = 0;
 
 	// Properties
 public:
@@ -101,12 +101,12 @@ public:
 	int PercentLost;
 	int MissedOverall;
 	int MissedMagic;
-	DWORD MaxPacketLen; // includes the CommHeaderType
+	unsigned int MaxPacketLen; // includes the CommHeaderType
 	CommHeaderType* PacketBuf;
-	WORD MagicNum;
-	DWORD RetryDelta; // delay before a packet is re-sent
-	DWORD MaxRetries;
-	DWORD Timeout;
+	unsigned short MagicNum;
+	unsigned int RetryDelta; // delay before a packet is re-sent
+	unsigned int MaxRetries;
+	unsigned int Timeout;
 	int NumRecNoAck;
 	int NumRecAck;
 	int NumSendNoAck;
