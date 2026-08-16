@@ -105,11 +105,11 @@ protected:
 	// Properties
 public:
 	CommBufferClass* Queue;
-	int __resends;
-	int __numlost;
-	int __percentlost;
-	int __missedoverall;
-	int __missedmagic;
+	int NumResends;
+	int NumLost;
+	int PercentLost;
+	int MissedOverall;
+	int MissedMagic;
 	DWORD MaxPacketLen; // includes the CommHeaderType
 	GlobalHeaderType* PacketBuf;
 	WORD MagicNum;
