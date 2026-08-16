@@ -24,7 +24,7 @@ struct SendQueueType
 	CommHeaderType* Buffer;
 	int ExtraLen;    // size of the extra data (an IPXAddressClass, for global conns)
 	void* ExtraBuffer;
-	__int16 Port;    // destination port this entry was queued for
+	short Port;      // destination port this entry was queued for
 };
 static_assert(sizeof(SendQueueType) == 0x24);
 
@@ -57,9 +57,9 @@ public:
 		{ JMP_THIS(0x48B390); }
 
 	// Send queue. Queue_Send returns zero when the queue is full.
-	int Queue_Send(void* buf, int buflen, void* extrabuf, int extralen, __int16 port)
+	int Queue_Send(void* buf, int buflen, void* extrabuf, int extralen, short port)
 		{ JMP_THIS(0x48B410); }
-	int UnQueue_Send(void* buf, int* buflen, int index, void* extrabuf, int* extralen, __int16 port)
+	int UnQueue_Send(void* buf, int* buflen, int index, void* extrabuf, int* extralen, short port)
 		{ JMP_THIS(0x48B570); }
 	SendQueueType* Get_Send(int index)
 		{ JMP_THIS(0x48B720); }
@@ -82,11 +82,11 @@ public:
 
 	// Response time tracking. The caller feeds in a delay whenever it detects
 	// an outgoing message has been ACK'd; the class keeps a running mean.
-	void Add_Delay(DWORD delay)
+	void Add_Delay(unsigned int delay)
 		{ JMP_THIS(0x48BA10); }
-	DWORD Avg_Response_Time()
+	unsigned int Avg_Response_Time()
 		{ JMP_THIS(0x48BA80); }
-	DWORD Max_Response_Time()
+	unsigned int Max_Response_Time()
 		{ JMP_THIS(0x48BA90); }
 
 	// Properties
@@ -96,19 +96,19 @@ public:
 	int MaxPacketSize;
 	int MaxExtraSize;
 
-	DWORD DelaySum;
-	DWORD NumDelay;
-	DWORD MeanDelay;
-	DWORD MaxDelay;
+	unsigned int DelaySum;
+	unsigned int NumDelay;
+	unsigned int MeanDelay;
+	unsigned int MaxDelay;
 
 	SendQueueType* SendQueue;
-	int SendCount;   // number of entries currently queued
-	DWORD SendTotal; // total ever added, used as the outgoing packet ID
+	int SendCount;          // number of entries currently queued
+	unsigned int SendTotal; // total ever added, used as the outgoing packet ID
 	int* SendIndex;
 
 	ReceiveQueueType* ReceiveQueue;
 	int ReceiveCount;
-	DWORD ReceiveTotal;
+	unsigned int ReceiveTotal;
 	int* ReceiveIndex;
 
 	int DebugOffset;
