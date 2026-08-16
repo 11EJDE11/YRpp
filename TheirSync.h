@@ -4,7 +4,7 @@
 
 struct TheirSync
 {
-	DEFINE_ARRAY_REFERENCE(TheirSync, [8], Array, 0xAFA358)
+	DEFINE_ARRAY_REFERENCE(TheirSync, [7], Array, 0xAFA358)
 
 	int Frame;
 	int CommandsSent;
