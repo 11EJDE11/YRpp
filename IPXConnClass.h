@@ -12,7 +12,7 @@ public:
 		CONN_NAME_MAX = 40
 	};
 
-	DEFINE_REFERENCE(WORD, Socket, 0xAA0568)
+	DEFINE_REFERENCE(unsigned short, Socket, 0xAA0568)
 	DEFINE_REFERENCE(int, Configured, 0xAA05A4)
 	DEFINE_REFERENCE(int, SocketOpen, 0xAA05A8)
 	DEFINE_REFERENCE(int, Listening, 0xAA05AC)
@@ -20,9 +20,9 @@ public:
 	virtual void Init() override
 		{ JMP_THIS(0x53F4E0); }
 
-	static int __fastcall Open_Socket(WORD socket)
+	static int __fastcall Open_Socket(unsigned short socket)
 		{ JMP_THIS(0x53F5F0); }
-	static void __fastcall Close_Socket(WORD socket)
+	static void __fastcall Close_Socket(unsigned short socket)
 		{ JMP_THIS(0x53F630); }
 
 	static int Start_Listening()
@@ -34,10 +34,10 @@ public:
 		{ JMP_THIS(0x53F830); }
 
 protected:
-	virtual int Send(CommHeaderType* buf, int buflen, void* extrabuf, int extralen, bool isGlobalConn, __int16 port) override
+	virtual int Send(CommHeaderType* buf, int buflen, void* extrabuf, int extralen, bool isGlobalConn, short port) override
 		{ JMP_THIS(0x53F5D0); }
 
-	virtual int Send_To_Address(CommHeaderType* buf, int buflen, IPXAddressClass* address, NetNodeType* nodeOverride, bool isGlobalConn, __int16 port)
+	virtual int Send_To_Address(CommHeaderType* buf, int buflen, IPXAddressClass* address, NetNodeType* nodeOverride, bool isGlobalConn, short port)
 		{ JMP_THIS(0x53F650); }
 
 public:
