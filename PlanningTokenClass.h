@@ -1,17 +1,24 @@
 #pragma once
 
 #include <AbstractClass.h>
+#include <EventClass.h>
 
 class TechnoClass;
 
-class PlanningBranchClass;
-// static_assert(sizeof(PlanningBranchClass) == 0x78);
+class PlanningBranchClass
+{
+public:
+	EventClass Packet;
+	int MemberCount;
+	int MemberIndex;
+};
+static_assert(sizeof(PlanningBranchClass) == 0x78);
 
 class PlanningMemberClass
 {
 public:
 	TechnoClass* Owner;
-	DWORD Packet;
+	EventClass* Packet;
 	int field_8;
 	char field_C;
 };
@@ -36,8 +43,13 @@ public:
 	int field_18;
 	bool field_1C;
 	DynamicVectorClass<PlanningBranchClass*> PlanningBranches;
-	//...
+	EventClass Packet;
+	int field_A8;
+	int field_AC;
+	int BranchNumber;
+	int field_B4;
 };
+static_assert(sizeof(PlanningNodeClass) == 0xB8);
 
 class PlanningTokenClass
 {
@@ -52,9 +64,7 @@ public:
 	TechnoClass* OwnerUnit;
 	DynamicVectorClass<PlanningNodeClass*> PlanningNodes;
 	bool field_1C;
-	bool field_1D;
-
-	DECLARE_PROPERTY_ARRAY(DWORD, unknown_20_88, 0x1B);
+	EventClass CurrentEvent;
 
 	int field_8C;
 	int ClosedLoopNodeCount;
