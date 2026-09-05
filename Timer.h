@@ -1,4 +1,8 @@
 #pragma once
+
+#include <Fundamentals.h>
+#include <Helpers/CompileTime.h>
+
 template<typename T>
 concept TimerType = std::convertible_to<T, int> && requires (T t)
 {
@@ -141,3 +145,28 @@ public:
 		return rate ? static_cast<double>(rate - this->GetTimeLeft()) / static_cast<double>(rate) : 1.0;
 	}
 };
+
+// The engine keeps its frame timers as three plain words rather than a TimerStruct: a start, a
+// current time and the remainder. Tick-based for campaign and skirmish, milliseconds for
+// multiplayer.
+struct BasicTimerStruct
+{
+	DWORD StartTime;
+	DWORD CurrentTime;
+	int TimeLeft;
+};
+
+static_assert(offsetof(BasicTimerStruct, TimeLeft) == 0x8);
+static_assert(sizeof(BasicTimerStruct) == 0xC);
+
+namespace Unsorted
+{
+	// The timers a frame is waited out on in Main_Loop and Sync_Delay: GameFrameTimer for a local
+	// game, NetworkFrameTimer for a networked one.
+	DEFINE_REFERENCE(BasicTimerStruct, NetworkFrameTimer, 0x887328u)
+	DEFINE_REFERENCE(BasicTimerStruct, GameFrameTimer, 0x887348u)
+
+	// A static local of Queue_AI_Multiplayer. While it has time left the per-frame sync CRCs are
+	// gathered but not compared.
+	DEFINE_REFERENCE(BasicTimerStruct, QueueAIMultiplayerSkipCRC, 0xAFA450u)
+}
