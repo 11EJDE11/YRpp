@@ -88,6 +88,15 @@ public:
 		DEFINE_REFERENCE(int, MaxAhead, 0xA8B550u)
 		DEFINE_REFERENCE(int, MaxMaxAhead, 0xA8B568u)
 		DEFINE_REFERENCE(int, PreCalcMaxAhead, 0xA8B56Cu)
+		// Command-rescheduling window, written by EventClass::Execute's TIMING
+		// case and read by Execute_DoList to move events caught by a timing
+		// change onto the new execution cadence.
+		DEFINE_REFERENCE(int, NewMaxAheadFrame1, 0xA8B1F8u)
+		DEFINE_REFERENCE(int, NewMaxAheadFrame2, 0xA8B1DCu)
+		// Main_Loop's per-frame cost accounting, in milliseconds. Queue_AI_Multiplayer
+		// divides these for the "Process" figure and clears them every 128 frames.
+		DEFINE_REFERENCE(int, ProcessingTicks, 0xA8B560u)
+		DEFINE_REFERENCE(int, ProcessingFrames, 0xA8B564u)
 		DEFINE_REFERENCE(int, LatencyFudge, 0xA8DB9Cu)
 		DEFINE_REFERENCE(int, RequestedFPS, 0xA8B558u)
 		DEFINE_REFERENCE(bool, OutOfSync, 0xA8B8C2)
