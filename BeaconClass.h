@@ -8,12 +8,13 @@ class BeaconClass
 public:
 	enum class Flag : byte
 	{
-		// Set by BeaconManagerClass::PlaceBeacon once the beacon has been given a house.
-		// VisibleToPlayer tests it first.
+		// Set by BeaconManagerClass::PlaceBeacon once the beacon has been given a house, which
+		// it is for any house index below 8. VisibleToPlayer tests it first.
 		Assigned = 0x1,
 
-		// Set by BeaconManagerClass::SelectBeacon on the beacon the local player clicked to type a
-		// message into. DeleteBeacon and EditBeaconMessage resolve a -1 house and slot to this one.
+		// Set by BeaconManagerClass::SelectBeacon on the beacon the local player clicked to type
+		// a message into, and cleared again when it is deselected. It is the beacon that
+		// DeleteBeacon and EditBeaconMessage resolve a -1 house / -1 slot to.
 		Selected = 0x2,
 	};
 
