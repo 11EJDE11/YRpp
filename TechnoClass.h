@@ -188,6 +188,7 @@ public:
 	static const auto AbsDerivateID = AbstractFlags::Techno;
 
 	DEFINE_REFERENCE(DynamicVectorClass<TechnoClass*>, Array, 0xA8EC78u)
+	DEFINE_REFERENCE(bool, ActionLinesEnabled, 0x843108u)
 
 	//IPersistStream
 	virtual HRESULT __stdcall Load(IStream* pStm) R0;
@@ -464,6 +465,10 @@ public:
 	{
 		JMP_THIS(0x706BD0);
 	}
+
+	// Draws one clipped action-line segment and its endpoint markers.
+	void DrawActionLineSegment(CoordStruct start, CoordStruct end, ColorStruct color, bool dashed, bool drawShadow)
+	{ JMP_THIS(0x7049C0); }
 
 	void DrawObject(SHPStruct* pSHP, int nFrame, Point2D* pLocation, RectangleStruct* pBounds,
 		int, int, int nZAdjust, ZGradient eZGradientDescIdx, int, int nBrightness, int TintColor,

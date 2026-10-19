@@ -21,7 +21,7 @@ class PlanningMemberClass
 {
 public:
 	TechnoClass* Owner;
-	EventClass* Packet;
+	EventClass* Order;
 	int field_8;
 	char field_C;
 	PROTECTED_PROPERTY(BYTE, align_D[3]);
@@ -36,6 +36,12 @@ public:
 	DEFINE_REFERENCE(DynamicVectorClass<PlanningNodeClass*>, Unknown3, 0xAC4C98u)
 
 	DEFINE_REFERENCE(bool, PlanningModeActive, 0xAC4CF4u)
+
+	static void __cdecl DrawAllBackground()
+		JMP_STD(0x63B0A0);
+
+	static void __cdecl DrawAllForeground()
+		JMP_STD(0x63B150);
 
 	//===========================================================================
 	//===== Functions ===========================================================
